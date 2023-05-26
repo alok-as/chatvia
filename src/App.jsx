@@ -1,11 +1,18 @@
-import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/home";
+import Login from "./pages/login";
+
 import "./assets/sass/main.scss";
 
 const App = () => {
 	return (
-		<div>
-			<h1>This is the Chatvia Application</h1>
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
+			</Routes>
+		</BrowserRouter>
 	);
 };
 
