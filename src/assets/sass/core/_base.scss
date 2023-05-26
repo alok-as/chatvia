@@ -1,0 +1,37 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+	font-size: 16px;
+	font-size: var(--primary-font);
+	box-sizing: border-box;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+button,
+input,
+textarea {
+	font-family: inherit;
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+}
