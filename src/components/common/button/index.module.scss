@@ -1,0 +1,11 @@
+.button {
+	width: 100%;
+	background-color: var(--button-bg);
+	padding: var(--button-padding);
+
+	font-size: var(--button-font-size);
+	color: var(--button-color);
+
+	border-radius: var(--button-border-radius);
+	border: none;
+}

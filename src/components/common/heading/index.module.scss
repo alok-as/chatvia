@@ -1,0 +1,13 @@
+.heading {
+	&__h1 {
+		font-size: var(---h1-font-size);
+	}
+
+	&__h2 {
+		font-size: var(---h2-font-size);
+	}
+
+	&__h3 {
+		font-size: var(---h3-font-size);
+	}
+}

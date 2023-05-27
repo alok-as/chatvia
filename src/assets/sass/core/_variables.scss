@@ -1,4 +1,65 @@
 :root {
+	// FONT
 	--primary-font: "Public Sans", sans-serif;
+
+	// LAYOUT
 	--doc-height: 100vh;
+	--row-width: 1140px;
+
+	// COLORS
+	--color-white-1: #ffffff;
+	--color-white-2: #f7f7f7;
+	--color-white-3: #f5f7fb;
+	--color-white-4: #f0eff5;
+	--color-white-5: #e1e9f1;
+	--color-white-6: #eff2f7;
+
+	--color-black-1: #000000;
+	--color-black-2: #495057;
+	--color-black-3: #343a40;
+	--color-black-4: #3e4a56;
+	--color-black-5: #303841;
+	--color-black-6: #262e35;
+	--color-black-7: #36404a;
+	--color-black-8: #272c3b;
+	--color-black-9: #2b3141;
+
+	--color-grey-1: #e6ebf5;
+	--color-grey-2: #ffffff80;
+	--color-grey-3: #adb5bd;
+	--color-grey-4: #a2adb7;
+	--color-grey-5: #9aa1b9;
+	--color-grey-6: #abb4d2;
+	--color-grey-7: #878a92;
+	--color-grey-8: #a6b0cf;
+	--color-grey-9: #f7f7ff;
+
+	--color-violet-1: #7a7f9a;
+	--color-violet-2: #7269ef;
+	--color-violet-3: #7269ef40;
+	--color-violet-4: #ef476f2e;
+
+	--color-green-1: #06d6a0;
+	--color-green-2: #048060;
+	--color-green-3: #cdf7ec;
+	--color-green-4: #b4f3e3;
+
+	--color-pink-1: #ef476f;
+	--color-yellow-2: #ffd166;
+
+	// HEADING
+	---h1-font-size: 2.1rem;
+	---h2-font-size: 1.6rem;
+	---h3-font-size: 1.5rem;
+
+	// BUTTON
+	--button-bg: var(--color-violet-2);
+	--button-color: var(--color-white-1);
+	--button-icon-fill: var(--color-white-1);
+	--button-padding: 1.2rem;
+	--button-font-size: 1.5rem;
+	--button-border-radius: 0.4rem;
+
+	// LOGIN
+	--login-bg: var(--color-grey-9);
 }
