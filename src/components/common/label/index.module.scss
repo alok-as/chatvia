@@ -1,0 +1,17 @@
+.label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	color: var(--label-color);
+	font-weight: var(--label-font-weight);
+	font-size: var(--label-font-size);
+	border-radius: var(--label-border-radius);
+	margin-bottom: 0.8rem;
+
+	&__info {
+		color: var(--label-info-color);
+		font-size: var(--label-info-font-size);
+		cursor: pointer;
+	}
+}

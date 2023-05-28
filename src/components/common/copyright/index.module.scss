@@ -1,0 +1,10 @@
+.copyright {
+	font-size: var(--copyright-font-size);
+	color: var(--copyright-text-color);
+
+	&__icon {
+		margin: 0 2px;
+		fill: var(--copyright-icon-fill);
+		vertical-align: middle;
+	}
+}

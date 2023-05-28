@@ -47,6 +47,12 @@
 	--color-pink-1: #ef476f;
 	--color-yellow-2: #ffd166;
 
+	// MARGINS
+	--margin-xtra-small: 0.8rem;
+	--margin-small: 1rem;
+	--margin-medium: 2.4rem;
+	--margin-lg: 4.8rem;
+
 	// HEADING
 	---h1-font-size: 2.1rem;
 	---h2-font-size: 1.6rem;
@@ -62,4 +68,29 @@
 
 	// LOGIN
 	--login-bg: var(--color-grey-9);
+
+	// LABEL
+	--label-color: var(--color-black-2);
+	--label-font-size: 1.5rem;
+	--label-font-weight: 500;
+	--label-border-radius: 0.4rem;
+	--label-info-color: var(--color-violet-1);
+	--label-info-font-size: 1.3rem;
+
+	// INPUT
+	--input-color: var(--color-black-2);
+	--input-bg: rgba(230, 235, 245, 0.25);
+	--input-border-color: var(--color-grey-1);
+	--input-font-size: 1.4rem;
+
+	// FORM INPUT
+	--form-input-bg: var(--color-grey-1);
+	--form-input-color: var(--color-black-2);
+	--form-input-border-color: var(--color-grey-1);
+	--form-input-icon-fill: var(--color-violet-1);
+
+	//COPYRIGHT
+	--copyright-icon-fill: var(--color-pink-1);
+	--copyright-text-color: var(--color-black-2);
+	--copyright-font-size: 1.5rem;
 }

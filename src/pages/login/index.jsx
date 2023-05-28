@@ -1,14 +1,63 @@
-import { Heading, Logo, Paragraph, Row } from "../../components/common";
+import { nanoid } from "nanoid";
+
+import {
+	Heading,
+	Logo,
+	Paragraph,
+	Row,
+	Copyright,
+} from "../../components/common";
+import { Form } from "../../components/form";
+
 import classes from "./index.module.scss";
+import useLogin from "./use-login";
+
+const fields = [
+	{
+		id: nanoid(),
+		name: "email",
+		label: "Username",
+		type: "email",
+		placeholder: "Enter email",
+		icon: "user",
+		disabled: false,
+	},
+	{
+		id: nanoid(),
+		name: "password",
+		label: "Password",
+		type: "password",
+		info: "Forgot Password?",
+		placeholder: "Enter password",
+		icon: "lock",
+		disabled: false,
+	},
+];
 
 const Login = () => {
+	const { loginUserHandler } = useLogin();
+
 	return (
 		<div className={classes["login"]}>
 			<Row>
 				<div className={classes["login__content"]}>
-					<Logo />
-					<Heading type="h1">Sign In</Heading>
-					<Paragraph>Sign in to continue to Chatvia.</Paragraph>
+					<Logo className={classes["login__logo"]} />
+					<Heading type="h1" className={classes["login__title"]}>
+						Sign in
+					</Heading>
+					<Paragraph className={classes["login__subtitle"]}>
+						Sign in to continue to Chatvia.
+					</Paragraph>
+					<Form
+						fields={fields}
+						onSubmit={loginUserHandler}
+						submitText="Sign In"
+					/>
+
+					<Paragraph className={classes["login__footer"]}>
+						Don't have an account? <span>Signup now</span>
+					</Paragraph>
+					<Copyright />
 				</div>
 			</Row>
 		</div>
