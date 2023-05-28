@@ -1,2 +1,11 @@
 .paragraph {
+	color: var(--color-violet-1);
+
+	&--small {
+		font-size: 1.4rem;
+	}
+
+	&--large {
+		font-size: 1.6rem;
+	}
 }

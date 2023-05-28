@@ -1,9 +1,9 @@
-import { Button } from "../../common";
+import { Button, Paragraph } from "../../common";
 import { FormInput } from "../index";
 
 import classes from "./index.module.scss";
 
-const Form = ({ fields, onSubmit, submitText }) => {
+const Form = ({ fields, onSubmit, submitText, footerText }) => {
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 		onSubmit(e);
@@ -15,6 +15,11 @@ const Form = ({ fields, onSubmit, submitText }) => {
 				<FormInput key={field.id} {...field} />
 			))}
 			<Button>{submitText}</Button>
+			{footerText && (
+				<Paragraph className={classes["form__footer"]} size="small">
+					{footerText}
+				</Paragraph>
+			)}
 		</form>
 	);
 };

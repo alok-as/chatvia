@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import { Link } from "react-router-dom";
 
 import {
 	Heading,
@@ -55,7 +56,8 @@ const Login = () => {
 					/>
 
 					<Paragraph className={classes["login__footer"]}>
-						Don't have an account? <span>Signup now</span>
+						Don't have an account?{" "}
+						<Link to="/register">Signup now</Link>
 					</Paragraph>
 					<Copyright />
 				</div>

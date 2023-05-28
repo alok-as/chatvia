@@ -1,9 +1,12 @@
 import classes from "./index.module.scss";
 import { combineClasses } from "../../../utils";
 
-const Paragraph = ({ className, children }) => {
+const Paragraph = ({ className, size = "large", children }) => {
 	const attachClassHandler = () => {
-		const paragraphClasses = [classes["paragraph"]];
+		const paragraphClasses = [
+			classes["paragraph"],
+			classes[`paragraph--${size}`],
+		];
 		className && paragraphClasses.push(className);
 		return combineClasses(paragraphClasses);
 	};
