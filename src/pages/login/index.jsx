@@ -29,6 +29,7 @@ const fields = [
 		label: "Password",
 		type: "password",
 		info: "Forgot Password?",
+		infoHref: "/forgot-password",
 		placeholder: "Enter password",
 		icon: "lock",
 		disabled: false,

@@ -6,6 +6,7 @@ const FormInput = ({
 	name,
 	label,
 	info,
+	infoHref,
 	type,
 	placeholder,
 	icon,
@@ -14,7 +15,7 @@ const FormInput = ({
 	return (
 		<div className={classes["form-input"]}>
 			{label && (
-				<Label info={info} id={id}>
+				<Label info={info} infoHref={infoHref} id={id}>
 					{label}
 				</Label>
 			)}
