@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import {
 	Heading,
@@ -11,6 +11,7 @@ import {
 import { Form } from "../../components/form";
 
 import classes from "./index.module.scss";
+import { useAuth } from "../../contexts/auth";
 import useRegister from "./user-register";
 
 const fields = [
@@ -45,6 +46,11 @@ const fields = [
 
 const Register = () => {
 	const { registerUserHandler } = useRegister();
+	const { isAuthenticated } = useAuth();
+
+	if (isAuthenticated) {
+		return <Navigate to="/" replace={true} />;
+	}
 
 	return (
 		<div className={classes["register"]}>
