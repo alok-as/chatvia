@@ -1,3 +1,4 @@
+export { default as Avatar } from "./avatar";
 export { default as Button } from "./button";
 export { default as Copyright } from "./copyright";
 export { default as Heading } from "./heading";
@@ -7,3 +8,5 @@ export { default as Label } from "./label";
 export { default as Logo } from "./logo";
 export { default as Paragraph } from "./paragraph";
 export { default as Row } from "./row";
+export { default as Tab } from "./tab";
+export { default as Tooltip } from "./tooltip";

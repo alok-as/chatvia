@@ -11,6 +11,10 @@ export const combineClasses = (...classes) => {
 		.join(" ");
 };
 
+export const createAvatarPlaceholder = (name) => {
+	return name.charAt(0).toUpperCase();
+};
+
 export const generateServerOrigin = () => {
 	const { protocol, domain, port, apiPrefix } = config.server;
 	let origin = `${protocol}://${domain}`;

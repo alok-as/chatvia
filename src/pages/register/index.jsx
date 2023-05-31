@@ -49,7 +49,7 @@ const Register = () => {
 	const isAuthenticated = useAuthStore(() => state.isAuthenticated);
 
 	if (isAuthenticated) {
-		return <Navigate to="/" replace={true} />;
+		return <Navigate to="/app" replace={true} />;
 	}
 
 	return (

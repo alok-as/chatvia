@@ -90,8 +90,22 @@
 	--form-input-border-color: var(--color-grey-1);
 	--form-input-icon-fill: var(--color-violet-1);
 
-	//COPYRIGHT
+	// COPYRIGHT
 	--copyright-icon-fill: var(--color-pink-1);
 	--copyright-text-color: var(--color-black-2);
 	--copyright-font-size: 1.5rem;
+
+	// SIDE NAVIGATION
+	--sidebar-navigation-bg: var(--color-white-1);
+	--sidebar-content-bg: var(--color-white-3);
+
+	// TABS
+	--tab-active-color: var(--color-grey-9);
+	--tab-border-radius: 0.8rem;
+	--tab-icon-fill-color: var(--color-grey-7);
+	--tab-active-icon-fill-color: var(--color-violet-2);
+
+	// TOOLTIP
+	--tooltip-bg: var(--color-black-6);
+	--tooltip-color: var(--color-white-2);
 }

@@ -1,0 +1,30 @@
+.tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #7269ef;
+	cursor: pointer;
+	height: 5.6rem;
+
+	&:not(:last-child) {
+		margin-bottom: 2rem;
+	}
+
+	&__item {
+		padding: 1.5rem;
+		border-radius: 0.4rem;
+	}
+
+	&__link {
+		padding: 1.5rem;
+		border-radius: var(--tab-border-radius);
+
+		&--active {
+			background-color: var(--tab-active-color);
+
+			svg {
+				fill: var(--tab-active-icon-fill-color);
+			}
+		}
+	}
+}
