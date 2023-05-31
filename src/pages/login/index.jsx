@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
+import { useAuthStore } from "../../store/auth";
 import {
 	Heading,
 	Logo,
@@ -16,10 +17,10 @@ import useLogin from "./use-login";
 const fields = [
 	{
 		id: nanoid(),
-		name: "email",
+		name: "username",
 		label: "Username",
-		type: "email",
-		placeholder: "Enter email",
+		type: "text",
+		placeholder: "Enter username or email",
 		icon: "user",
 		disabled: false,
 	},
@@ -38,6 +39,11 @@ const fields = [
 
 const Login = () => {
 	const { loginUserHandler } = useLogin();
+	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+	if (isAuthenticated) {
+		return <Navigate to="/" replace={true} />;
+	}
 
 	return (
 		<div className={classes["login"]}>

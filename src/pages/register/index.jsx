@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { Link, Navigate } from "react-router-dom";
 
+import { useAuthStore } from "../../store/auth";
 import {
 	Heading,
 	Logo,
@@ -11,7 +12,6 @@ import {
 import { Form } from "../../components/form";
 
 import classes from "./index.module.scss";
-import { useAuth } from "../../contexts/auth";
 import useRegister from "./user-register";
 
 const fields = [
@@ -46,7 +46,7 @@ const fields = [
 
 const Register = () => {
 	const { registerUserHandler } = useRegister();
-	const { isAuthenticated } = useAuth();
+	const isAuthenticated = useAuthStore(() => state.isAuthenticated);
 
 	if (isAuthenticated) {
 		return <Navigate to="/" replace={true} />;

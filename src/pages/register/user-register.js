@@ -1,10 +1,12 @@
 import { toast } from "react-toastify";
 
 import User from "../../services/user";
-import { useAuth } from "../../contexts/auth";
+import { useAuthStore } from "../../store/auth";
 
 const useRegister = () => {
-	const { setIsAuthenticated } = useAuth();
+	const setIsAuthenticated = useAuthStore(
+		(state) => state.setIsAuthenticated
+	);
 
 	const registerUserHandler = async (e) => {
 		try {
@@ -13,13 +15,15 @@ const useRegister = () => {
 			const formData = new FormData(targetForm);
 			const userData = Object.fromEntries(formData.entries());
 
-			await User.register(userData);
-			setIsAuthenticated(true);
+			const { data, message } = await User.register(userData);
+			const { accessToken, refreshToken } = data;
+			storeAuthTokens(accessToken, refreshToken);
 
-			toast.success("User logged in!");
+			setIsAuthenticated(true);
+			toast.success(message);
 		} catch (error) {
 			console.log("Error registering user", error);
-			toast.error("Error logging in user!");
+			toast.error("Error registering user");
 		}
 	};
 
