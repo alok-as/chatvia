@@ -1,0 +1,30 @@
+.register-form {
+	text-align: center;
+	width: 41.66667%;
+	margin: 0 auto;
+	border-radius: 0.4rem;
+	border: 0 solid var(--color-white-3);
+
+	&__logo {
+		margin-bottom: var(--margin-lg);
+	}
+
+	&__title {
+		color: var(--color-black-2);
+		margin-bottom: var(--margin-xtra-small);
+	}
+
+	&__subtitle {
+		color: var(--color-violet-1);
+		margin-bottom: var(--margin-medium);
+	}
+
+	&__footer {
+		margin-bottom: 1.6rem;
+
+		a {
+			color: var(--color-violet-2);
+			cursor: pointer;
+		}
+	}
+}

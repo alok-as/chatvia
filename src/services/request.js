@@ -1,6 +1,6 @@
 import axios from "axios";
 import { generateServerOrigin } from "../utils";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../components/features/auth/store";
 
 const request = axios.create({
 	baseURL: generateServerOrigin(),

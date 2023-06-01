@@ -9,7 +9,7 @@ const Tab = ({ children, title, to, position, onClick, isLink }) => {
 	if (isLink) {
 		return (
 			<Tooltip text={title} position={position}>
-				<li className={classes["tab"]} onClick={onClick}>
+				<li className={classes["tab"]}>
 					<NavLink
 						to={to}
 						className={({ isActive }) =>

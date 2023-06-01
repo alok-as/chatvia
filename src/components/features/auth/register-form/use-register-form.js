@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
 
-import User from "../../services/user";
-import { useAuthStore } from "../../store/auth";
+import User from "../../../../services/user";
+import { useAuthStore } from "../store";
 
-const useRegister = () => {
+const useRegisterForm = () => {
 	const setIsAuthenticated = useAuthStore(
 		(state) => state.setIsAuthenticated
 	);
@@ -30,4 +30,4 @@ const useRegister = () => {
 	return { registerUserHandler };
 };
 
-export default useRegister;
+export default useRegisterForm;

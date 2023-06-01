@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 
-import User from "../../services/user";
-import { useAuthStore } from "../../store/auth";
-import { storeAuthTokens } from "../../utils";
+import User from "../../../../services/user";
+import { useAuthStore } from "../store";
+import { storeAuthTokens } from "../../../../utils";
 
-const useLogin = () => {
+const useLoginForm = () => {
 	const setIsAuthenticated = useAuthStore(
 		(state) => state.setIsAuthenticated
 	);
@@ -35,4 +35,4 @@ const useLogin = () => {
 	return { loginUserHandler };
 };
 
-export default useLogin;
+export default useLoginForm;
