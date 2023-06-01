@@ -17,12 +17,12 @@ const tabs = [
 		to: "/app/chat",
 		icon: <Icon name="message" className={classes["navigation__icon"]} />,
 	},
-	{
-		key: nanoid(),
-		title: "Groups",
-		to: "/app/groups",
-		icon: <Icon name="group" className={classes["navigation__icon"]} />,
-	},
+	// {
+	// 	key: nanoid(),
+	// 	title: "Groups",
+	// 	to: "/app/groups",
+	// 	icon: <Icon name="group" className={classes["navigation__icon"]} />,
+	// },
 	{
 		key: nanoid(),
 		title: "Contacts",

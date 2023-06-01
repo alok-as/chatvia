@@ -11,6 +11,8 @@ export { default as Logo } from "./logo";
 export { default as Paragraph } from "./paragraph";
 export { default as PersonalDetails } from "./personal-details";
 export { default as Row } from "./row";
+export { default as Search } from "./search";
 export { default as Tab } from "./tab";
+export { default as Timestamp } from "./timestamp";
 export { default as Tooltip } from "./tooltip";
 export { default as Status } from "./status";

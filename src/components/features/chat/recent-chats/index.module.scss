@@ -1,0 +1,15 @@
+.recent-chats {
+	height: 100%;
+
+	&__heading {
+		margin-bottom: 2.4rem;
+	}
+
+	&__subheading {
+		margin-bottom: 1rem;
+	}
+
+	&__messages {
+		overflow-y: auto;
+	}
+}

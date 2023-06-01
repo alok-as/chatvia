@@ -41,7 +41,7 @@ const LoginForm = () => {
 	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
 	if (isAuthenticated) {
-		return <Navigate to="/app" replace={true} />;
+		return <Navigate to="/app/chat" replace={true} />;
 	}
 
 	return (

@@ -1,0 +1,33 @@
+.message {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 1.5rem;
+	border-radius: 0.6rem;
+
+	&:not(:last-child) {
+		margin-bottom: 2px;
+	}
+
+	&:hover,
+	&--active {
+		background-color: var(--user-card-active-bg);
+	}
+
+	&__avatar {
+		margin-right: 1.5rem;
+	}
+
+	&__content {
+		display: flex;
+		flex: 1;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__text {
+		font-size: 1.4rem;
+		color: var(--user-card-active-color);
+		margin-top: 4px;
+	}
+}

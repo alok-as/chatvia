@@ -1,7 +1,6 @@
 import { nanoid } from "nanoid";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { useAuthStore } from "../store";
 import { Heading, Logo, Paragraph, Copyright } from "../../../common";
 import { Form } from "../../../form";
 
@@ -22,11 +21,6 @@ const fields = [
 
 const ForgotPasswordForm = () => {
 	const { forgotPasswordHandler } = useForgotForm();
-	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-
-	if (isAuthenticated) {
-		return <Navigate to="/app" replace={true} />;
-	}
 
 	return (
 		<div className={classes["forgot-password-form"]}>

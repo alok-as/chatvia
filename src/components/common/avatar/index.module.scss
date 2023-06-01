@@ -34,8 +34,15 @@
 		width: 1rem;
 		height: 1rem;
 		border-radius: 50%;
-		background-color: var(--status-active);
 		border: 2px solid var(--status-border-color);
+
+		&--online {
+			background-color: var(--status-online-color);
+		}
+
+		&--offline {
+			background-color: var(--status-offline-color);
+		}
 	}
 
 	&__bg {

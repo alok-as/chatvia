@@ -1,8 +1,11 @@
 import dayjs from "dayjs";
+import Calendar from "dayjs/plugin/calendar";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
-dayjs.extend(isSameOrAfter);
 
 import config from "../config";
+
+dayjs.extend(Calendar);
+dayjs.extend(isSameOrAfter);
 
 export const combineClasses = (...classes) => {
 	return classes
@@ -111,3 +114,11 @@ export const getKeyFromLocalStorage = (key, defaultValue = null) => {
 
 export const getRootFontValue = () =>
 	parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+export const formatTimestamp = (timestamp) => {
+	return dayjs(timestamp).calendar(null, {
+		sameDay: "h:mm A",
+		lastDay: "[Yesterday]",
+		sameElse: "DD/MM/YYYY",
+	});
+};

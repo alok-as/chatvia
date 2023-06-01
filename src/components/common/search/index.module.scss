@@ -1,0 +1,37 @@
+.search {
+	display: flex;
+	align-items: center;
+	background-color: var(--search-input-bg);
+	border-radius: var(--search-input-border-radius);
+	padding: 1.4rem 2.4rem;
+	margin-bottom: 4rem;
+
+	&__glass,
+	&__reset {
+		svg {
+			width: 1.8rem;
+			height: 1.8rem;
+			fill: var(--search-icons-color);
+		}
+	}
+
+	&__glass {
+		margin-right: 1.2rem;
+	}
+
+	&__input {
+		color: var(--search-input-color);
+		border: none;
+		flex: 1;
+		background: none;
+
+		&::placeholder {
+			color: var(--search-input-color);
+		}
+	}
+
+	&__reset {
+		cursor: pointer;
+		margin-left: 1.2rem;
+	}
+}

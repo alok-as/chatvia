@@ -109,33 +109,46 @@
 	--tooltip-bg: var(--color-black-6);
 	--tooltip-color: var(--color-white-2);
 
-	//PROFILE
+	// PROFILE
 	--profile-icon-color: var(--color-violet-1);
 
-	//STATUS
-	--status-active: var(--color-green-1);
+	// STATUS
 	--status-border-color: var(--color-white-1);
 	--status-color: var(--color-violet-1);
 	--status-online-color: var(--color-green-1);
 	--status-offline-color: var(--color-yellow-2);
 
-	//ACCORDIAN
+	// ACCORDIAN
 	--accordian-header-bg: var(--color-white-1);
 	--accordian-color: var(--color-black-2);
 	--accordian-icon-color: var(--color-black-2);
 	--accordian-content-bg: var(--color-white-1);
 	--accordian-border-color: var(--color-white-4);
 
-	//PERSONAL DETAILS
+	// PERSONAL DETAILS
 	--personal-details-label-color: var(--color-violet-1);
 	--personal-details-label-font-size: 1.5rem;
 	--personal-details-value-color: var(--color-black-2);
 	--personal-details-value-font-size: 1.4rem;
 	--personal-details-value-font-weight: 600;
 
-	//ATTCHMENT
+	// ATTACHMENT
 	--attachment-border-color: var(--color-white-4);
 	--attachment-padding: 0.8rem;
 	--attachment-name-color: var(--color-black-2);
 	--attachment-size-color: var(--color-violet-1);
+
+	//SEARCH
+	--search-input-bg: var(--color-grey-1);
+	--search-input-color: var(--color-black-2);
+	--search-input-border-radius: 0.5rem;
+	--search-icons-color: var(--color-violet-1);
+
+	// USER CARD
+	--user-card-active-bg: var(--color-grey-1);
+	--user-card-active-color: var(--color-violet-1);
+
+	// TIMESTAMP
+	--timestamp-color: var(--color-violet-1);
+	--timestamp-font-size: 1.1rem;
 }
