@@ -1,0 +1,19 @@
+.personal-details {
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 2.4rem;
+		}
+	}
+
+	&__label {
+		color: var(--personal-details-label-color);
+		font-size: var(--personal-details-label-font-size);
+		margin-bottom: 4px;
+	}
+
+	&__value {
+		color: var(--personal-details-value-color);
+		font-size: var(--personal-details-value-font-size);
+		font-weight: var(--personal-details-value-font-weight);
+	}
+}

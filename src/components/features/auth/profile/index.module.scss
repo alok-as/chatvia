@@ -1,0 +1,34 @@
+.profile {
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__icon {
+		svg {
+			transform: rotate(90deg);
+			width: 2rem;
+			height: 2rem;
+			fill: var(--profile-icon-color);
+		}
+	}
+
+	&__heading {
+		margin-bottom: 2.4rem;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		padding: 2.4rem 0;
+		margin-bottom: 2.4rem;
+	}
+
+	&__details {
+		margin-top: 2.4rem;
+	}
+}

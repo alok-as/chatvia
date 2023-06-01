@@ -108,3 +108,6 @@ export const getKeyFromLocalStorage = (key, defaultValue = null) => {
 		return defaultValue;
 	}
 };
+
+export const getRootFontValue = () =>
+	parseFloat(getComputedStyle(document.documentElement).fontSize);

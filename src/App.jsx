@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import ForgotPassword from "./pages/forgot-password";
+import Profile from "./components/features/auth/profile";
 
 import ProtectedRoute from "./components/features/auth/protected-route";
 
@@ -15,10 +16,7 @@ const App = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/app" element={<ProtectedRoute />}>
-					<Route
-						path="profile"
-						element={<div>This is the profile</div>}
-					/>
+					<Route path="profile" element={<Profile />} />
 					<Route path="chat" element={<div>This is the chat</div>} />
 					<Route
 						path="groups"
