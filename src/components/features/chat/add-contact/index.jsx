@@ -1,14 +1,24 @@
-import { useState } from "react";
 import { nanoid } from "nanoid";
+import { toast } from "react-toastify";
 
 import { Heading, Icon, Button, Backdrop } from "../../../common";
 import { Form } from "../../../form";
+
 import Portal from "../../portal";
+import Contact from "../../../../services/contact";
 
 import classes from "./index.module.scss";
 import { useOutsideClick } from "../../../../hooks";
 
 const fields = [
+	{
+		id: nanoid(),
+		type: "text",
+		name: "name",
+		label: "Name",
+		placeholder: "Enter Name",
+		disabled: false,
+	},
 	{
 		id: nanoid(),
 		type: "email",
@@ -27,25 +37,24 @@ const fields = [
 	},
 ];
 
-const AddContact = ({ onClose }) => {
+const AddContact = ({ onClose, onSuccess }) => {
 	const { ref } = useOutsideClick(onClose);
 
-	const [email, setEmail] = useState("");
-	const [message, setMessage] = useState("");
+	const onSendInviteHandler = async (e) => {
+		try {
+			e.preventDefault();
+			const targetForm = e.currentTarget;
+			const formData = new FormData(targetForm);
+			const contactData = Object.fromEntries(formData.entries());
 
-	const onInputChangeHandler = (e) => {
-		const field = e.target.name;
-		const value = e.target.value;
-
-		if (field.includes("email")) {
-			setEmail(value);
-		} else {
-			setMessage(value);
+			const { message } = await Contact.create(contactData);
+			toast.success(message);
+			onSuccess();
+			onClose();
+		} catch (error) {
+			console.log("Error creating contact!", error);
+			toast.error("Error creating contact!");
 		}
-	};
-
-	const onSendInviteHandler = (data) => {
-		console.log("submitting", data);
 	};
 
 	return (
@@ -57,19 +66,11 @@ const AddContact = ({ onClose }) => {
 					<Icon name="close" onClick={onClose} />
 				</div>
 
-				<Form fields={fields} onSubmit={onSendInviteHandler} />
-
-				<div className={classes["add-contact__footer"]}>
-					<Button
-						onClick={onClose}
-						className={classes["add-contact__button"]}
-					>
-						Close
-					</Button>
-					<Button className={classes["add-contact__button"]}>
-						Invite Contact
-					</Button>
-				</div>
+				<Form
+					fields={fields}
+					onSubmit={onSendInviteHandler}
+					submitText="Invite Contact"
+				/>
 			</div>
 		</Portal>
 	);

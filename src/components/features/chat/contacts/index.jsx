@@ -1,34 +1,25 @@
-import { useState } from "react";
-import { nanoid } from "nanoid";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { Heading, ContactGroup, Search, Icon } from "../../../common";
 
 import classes from "./index.module.scss";
 import AddContact from "../add-contact";
+import Contact from "../../../../services/contact";
 
-const contacts = {
-	a: [
-		{ id: nanoid(), name: "Alok Sharma", email: "alok.sharma@gmail.com" },
-		{ id: nanoid(), name: "Aman Jethwani", email: "alok.sharma@gmail.com" },
-	],
-	n: [
-		{ id: nanoid(), name: "Nitin Sharma", email: "nitin.sharma@gmail.com" },
-		{
-			id: nanoid(),
-			name: "Nikita Gandhi",
-			email: "nikita.gandhi@gmail.com",
-		},
-	],
-	s: [
-		{
-			id: nanoid(),
-			name: "Sahej Khurana",
-			email: "sahej.khurana@gmail.com",
-		},
-	],
+const getContactsMap = (data) => {
+	const contactsMap = {};
+
+	data.forEach((contact) => {
+		const { initial, contacts } = contact;
+		contactsMap[initial] = contacts;
+	});
+
+	return contactsMap;
 };
 
 const Contacts = () => {
+	const [contacts, setContacts] = useState({});
 	const [searchInput, setSearchInput] = useState("");
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,6 +38,21 @@ const Contacts = () => {
 	const onCloseModalHandler = () => {
 		setIsModalOpen(false);
 	};
+
+	const getUserContactsHandler = async () => {
+		try {
+			const { data } = await Contact.get();
+			const contacts = getContactsMap(data);
+			setContacts(contacts);
+		} catch (error) {
+			console.log("Error fetching contacts!", error.message);
+			toast.error("Error fetching contacts!");
+		}
+	};
+
+	useEffect(() => {
+		getUserContactsHandler();
+	}, []);
 
 	return (
 		<div className={classes["contacts"]}>
@@ -78,7 +84,12 @@ const Contacts = () => {
 				))}
 			</div>
 
-			{isModalOpen && <AddContact onClose={onCloseModalHandler} />}
+			{isModalOpen && (
+				<AddContact
+					onClose={onCloseModalHandler}
+					onSuccess={getUserContactsHandler}
+				/>
+			)}
 		</div>
 	);
 };
