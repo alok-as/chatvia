@@ -2,6 +2,7 @@ export { default as Accordian } from "./accordian";
 export { default as Attachment } from "./attachment";
 export { default as Avatar } from "./avatar";
 export { default as Button } from "./button";
+export { default as ContactGroup } from "./contact-group";
 export { default as Copyright } from "./copyright";
 export { default as Heading } from "./heading";
 export { default as Icon } from "./icon";

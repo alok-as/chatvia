@@ -9,6 +9,7 @@ import Profile from "./components/features/auth/profile";
 import ProtectedRoute from "./components/features/auth/protected-route";
 
 import RecentChats from "./components/features/chat/recent-chats";
+import Contacts from "./components/features/chat/contacts";
 
 import "./assets/sass/main.scss";
 import "react-toastify/dist/ReactToastify.css";
@@ -22,10 +23,7 @@ const App = () => {
 
 					<Route path="profile" element={<Profile />} />
 					<Route path="chat" element={<RecentChats />} />
-					<Route
-						path="groups"
-						element={<div>This is the chat</div>}
-					/>
+					<Route path="contacts" element={<Contacts />} />
 
 					<Route path="*" element={<Navigate to="/app/chat" />} />
 				</Route>

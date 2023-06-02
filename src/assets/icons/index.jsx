@@ -362,7 +362,7 @@ const AddUser = ({ className, onClick }) => (
 
 const Icons = {
 	user: User,
-	addUser: AddUser,
+	"add-user": AddUser,
 	sun: Sun,
 	moon: Moon,
 	group: Group,

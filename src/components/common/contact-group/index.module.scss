@@ -1,0 +1,35 @@
+.contact-group {
+	&:not(:last-child) {
+		margin-bottom: 4rem;
+	}
+
+	&__initial {
+		color: var(--contact-group-initial-color);
+		font-size: var(--contact-group-font-size);
+		font-weight: var(--contact-group-font-weight);
+		text-transform: uppercase;
+		padding: 1.6rem;
+	}
+}
+
+.contact {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 1.6rem;
+
+	&__name {
+		color: var(--contact-font-color);
+		font-size: var(--contact-font-size);
+		font-weight: var(--contact-font-weight);
+	}
+
+	&__icon {
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+			transform: rotate(-90deg);
+			fill: var(--color-violet-1);
+		}
+	}
+}
