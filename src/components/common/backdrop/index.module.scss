@@ -1,0 +1,9 @@
+.backdrop {
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: var(--doc-height);
+	background-color: var(--color-black-1);
+	opacity: 0.5;
+	z-index: 100;
+}

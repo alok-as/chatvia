@@ -1,6 +1,7 @@
 export { default as Accordian } from "./accordian";
 export { default as Attachment } from "./attachment";
 export { default as Avatar } from "./avatar";
+export { default as Backdrop } from "./backdrop";
 export { default as Button } from "./button";
 export { default as ContactGroup } from "./contact-group";
 export { default as Copyright } from "./copyright";
@@ -14,6 +15,7 @@ export { default as PersonalDetails } from "./personal-details";
 export { default as Row } from "./row";
 export { default as Search } from "./search";
 export { default as Tab } from "./tab";
+export { default as Textarea } from "./textarea";
 export { default as Timestamp } from "./timestamp";
 export { default as Tooltip } from "./tooltip";
 export { default as Status } from "./status";

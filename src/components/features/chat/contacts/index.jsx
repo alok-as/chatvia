@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { Heading, ContactGroup, Search, Icon } from "../../../common";
 
 import classes from "./index.module.scss";
+import AddContact from "../add-contact";
 
 const contacts = {
 	a: [
@@ -43,6 +44,10 @@ const Contacts = () => {
 		setIsModalOpen(true);
 	};
 
+	const onCloseModalHandler = () => {
+		setIsModalOpen(false);
+	};
+
 	return (
 		<div className={classes["contacts"]}>
 			<div className={classes["contacts__header"]}>
@@ -72,6 +77,8 @@ const Contacts = () => {
 					/>
 				))}
 			</div>
+
+			{isModalOpen && <AddContact onClose={onCloseModalHandler} />}
 		</div>
 	);
 };

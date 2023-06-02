@@ -47,12 +47,15 @@ const LoginForm = () => {
 	return (
 		<div className={classes["login-form"]}>
 			<Logo className={classes["login-form__logo"]} />
+
 			<Heading type="h1" className={classes["login-form__title"]}>
 				Sign in
 			</Heading>
+
 			<Paragraph className={classes["login-form__subtitle"]}>
 				Sign in to continue to Chatvia.
 			</Paragraph>
+
 			<Form
 				fields={fields}
 				onSubmit={loginUserHandler}
