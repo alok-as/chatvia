@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { Link, Navigate } from "react-router-dom";
 
-import { useAuthStore } from "../store";
+import { useAuthStore } from "../../store/auth";
 import {
 	Heading,
 	Logo,
@@ -45,9 +45,9 @@ const fields = [
 
 const RegisterForm = () => {
 	const { registerUserHandler } = useRegisterForm();
-	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+	const profile = useAuthStore((state) => state.profile);
 
-	if (isAuthenticated) {
+	if (profile) {
 		return <Navigate to="/app/chat" replace={true} />;
 	}
 

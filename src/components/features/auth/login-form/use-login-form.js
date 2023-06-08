@@ -1,13 +1,11 @@
 import { toast } from "react-toastify";
 
 import User from "../../../../services/user";
-import { useAuthStore } from "../store";
-import { storeAuthTokens } from "../../../../utils";
+import { useAuthStore } from "../../store/auth";
+import { storeAuthTokens, storeUserProfile } from "../../../../utils";
 
 const useLoginForm = () => {
-	const setIsAuthenticated = useAuthStore(
-		(state) => state.setIsAuthenticated
-	);
+	const setUserProfile = useAuthStore((state) => state.setUserProfile);
 
 	const loginUserHandler = async (e) => {
 		try {
@@ -21,10 +19,11 @@ const useLoginForm = () => {
 				password: userData.password,
 			});
 
-			const { accessToken, refreshToken } = data;
+			const { accessToken, refreshToken, profile } = data;
 			storeAuthTokens(accessToken, refreshToken);
+			storeUserProfile(profile);
 
-			setIsAuthenticated(true);
+			setUserProfile(profile);
 			toast.success(message);
 		} catch (error) {
 			console.log("Error logging in user!", error);

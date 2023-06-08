@@ -3,11 +3,14 @@ import {
 	generateServerOrigin,
 	storeAuthTokens,
 	getKeyFromLocalStorage,
+	removeAuthTokens,
 } from "../utils";
-import { useAuthStore } from "../components/features/auth/store";
+import { useAuthStore } from "../components/features/store/auth";
+
+const baseURL = generateServerOrigin();
 
 const request = axios.create({
-	baseURL: generateServerOrigin(),
+	baseURL: `${baseURL}/api`,
 });
 
 request.interceptors.request.use(
@@ -41,7 +44,8 @@ request.interceptors.response.use(
 				storeAuthTokens(accessToken, refreshToken);
 				return instance(originalRequest);
 			} else {
-				useAuthStore.setState({ isAuthenticated: false });
+				removeAuthTokens();
+				useAuthStore.setState({ profile: null });
 				return Promise.reject(error);
 			}
 		}

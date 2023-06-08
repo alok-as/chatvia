@@ -19,15 +19,11 @@ export const createAvatarPlaceholder = (name) => {
 };
 
 export const generateServerOrigin = () => {
-	const { protocol, domain, port, apiPrefix } = config.server;
+	const { protocol, domain, port } = config.server;
 	let origin = `${protocol}://${domain}`;
 
 	if (port) {
 		origin = `${origin}:${port}`;
-	}
-
-	if (apiPrefix) {
-		origin = `${origin}/${apiPrefix}`;
 	}
 
 	return origin;
@@ -64,17 +60,34 @@ export const setKeyInLocalStorage = (key, value, expiry) => {
 	localStorage.setItem(key, JSON.stringify(data));
 };
 
-export const storeAuthTokens = (accessToken, refreshToken) => {
+export const storeAuthTokens = (accessToken, refreshToken, profile) => {
 	const { accessExpiry, refreshExpiry } = config.security;
 
 	setKeyInLocalStorage("accessToken", accessToken, accessExpiry);
 	setKeyInLocalStorage("refreshToken", refreshToken, refreshExpiry);
+	setKeyInLocalStorage("profile", profile, refreshExpiry);
+};
+
+export const storeUserProfile = (profile) => {
+	const { refreshExpiry } = config.security;
+	setKeyInLocalStorage("profile", profile, refreshExpiry);
+};
+
+export const removeAuthTokens = () => {
+	removeKeyFromLocalStorage("accessToken");
+	removeKeyFromLocalStorage("refreshToken");
+	removeKeyFromLocalStorage("profile");
 };
 
 export const getAuthTokens = () => {
 	const accessToken = getKeyFromLocalStorage("accessToken");
 	const refreshToken = getKeyFromLocalStorage("accessToken");
 	return { accessToken, refreshToken };
+};
+
+export const getUserProfile = () => {
+	const profile = getKeyFromLocalStorage("profile");
+	return profile;
 };
 
 export const checkIfLocalDataExpired = (key, expiry) => {

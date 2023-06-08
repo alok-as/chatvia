@@ -27,14 +27,6 @@ const fields = [
 		placeholder: "Enter Email",
 		disabled: false,
 	},
-	{
-		id: nanoid(),
-		type: "textarea",
-		name: "message",
-		label: "Invitation Message",
-		placeholder: "Enter Message",
-		disabled: false,
-	},
 ];
 
 const AddContact = ({ onClose, onSuccess }) => {

@@ -1,12 +1,12 @@
 import { Navigate } from "react-router-dom";
 
 import Layout from "../../layout";
-import { useAuthStore } from "../store";
+import { useAuthStore } from "../../store/auth";
 
 const ProtectedRoute = () => {
-	const { isAuthenticated } = useAuthStore();
+	const { profile } = useAuthStore();
 
-	if (!isAuthenticated) {
+	if (!profile) {
 		return <Navigate to="/login" replace={true} />;
 	}
 
