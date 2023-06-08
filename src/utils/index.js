@@ -60,12 +60,15 @@ export const setKeyInLocalStorage = (key, value, expiry) => {
 	localStorage.setItem(key, JSON.stringify(data));
 };
 
-export const storeAuthTokens = (accessToken, refreshToken, profile) => {
+export const storeAuthTokens = (accessToken, refreshToken) => {
 	const { accessExpiry, refreshExpiry } = config.security;
 
 	setKeyInLocalStorage("accessToken", accessToken, accessExpiry);
 	setKeyInLocalStorage("refreshToken", refreshToken, refreshExpiry);
-	setKeyInLocalStorage("profile", profile, refreshExpiry);
+};
+
+export const removeKeyFromLocalStorage = (key) => {
+	localStorage.removeItem(key);
 };
 
 export const storeUserProfile = (profile) => {

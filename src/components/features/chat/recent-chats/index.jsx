@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
 import { nanoid } from "nanoid";
 
-import { Heading, Search } from "../../../common";
+import { Heading, Icon, Search } from "../../../common";
 import UserCard from "../user-card";
 
 import classes from "./index.module.scss";
 
 import profilePic1 from "../../../../assets/images/avatar-1.jpg";
 import profilePic2 from "../../../../assets/images/avatar-2.jpg";
+import AddChat from "../add-chat";
 
 const recentChats = [
 	{
@@ -35,6 +36,8 @@ const Recent = () => {
 	const [searchInput, setSearchInput] = useState("");
 	const [activeChatId, setActiveChatId] = useState(recentChats[0].id);
 
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	const onInputChangeHandler = (e) => {
 		setSearchInput(e.target.value);
 	};
@@ -55,11 +58,27 @@ const Recent = () => {
 		);
 	};
 
+	const onOpenModalHandler = () => {
+		setIsModalOpen(true);
+	};
+
+	const onCloseModalHandler = () => {
+		setIsModalOpen(false);
+	};
+
 	return (
 		<div className={classes["recent-chats"]}>
-			<Heading type="h1" className={classes["recent-chats__heading"]}>
-				Chats
-			</Heading>
+			<div className={classes["recent-chats__header"]}>
+				<Heading type="h1" className={classes["recent-chats__heading"]}>
+					Chats
+				</Heading>
+
+				<Icon
+					name="add-user"
+					className={classes["recent-chats__icon"]}
+					onClick={onOpenModalHandler}
+				/>
+			</div>
 
 			<Search
 				ref={searchRef}
@@ -90,6 +109,8 @@ const Recent = () => {
 					)
 				)}
 			</div>
+
+			{isModalOpen && <AddChat onClose={onCloseModalHandler} />}
 		</div>
 	);
 };

@@ -61,7 +61,7 @@ const AddContact = ({ onClose, onSuccess }) => {
 				<Form
 					fields={fields}
 					onSubmit={onSendInviteHandler}
-					submitText="Invite Contact"
+					submitText="Add Contact"
 				/>
 			</div>
 		</Portal>

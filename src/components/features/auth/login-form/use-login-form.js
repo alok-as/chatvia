@@ -26,8 +26,9 @@ const useLoginForm = () => {
 			setUserProfile(profile);
 			toast.success(message);
 		} catch (error) {
-			console.log("Error logging in user!", error);
-			toast.error("Error logging in user!");
+			const message =
+				error?.response?.data?.message || "Error logging in user!";
+			toast.error(message);
 		}
 	};
 

@@ -1,8 +1,8 @@
 import axios from "axios";
 import {
 	generateServerOrigin,
+	getAuthTokens,
 	storeAuthTokens,
-	getKeyFromLocalStorage,
 	removeAuthTokens,
 } from "../utils";
 import { useAuthStore } from "../components/features/store/auth";
@@ -15,8 +15,7 @@ const request = axios.create({
 
 request.interceptors.request.use(
 	(config) => {
-		const accessToken = getKeyFromLocalStorage("accessToken");
-		const refreshToken = getKeyFromLocalStorage("refreshToken");
+		const { accessToken, refreshToken } = getAuthTokens();
 
 		if (accessToken) {
 			config.headers["Authorization"] = `Bearer ${accessToken}`;
@@ -40,9 +39,9 @@ request.interceptors.response.use(
 
 		if (error.response.status === 401) {
 			if (error.response?.data?.code === 490) {
-				const { accessToken, refreshToken } = error.response.data;
+				const { accessToken, refreshToken } = error.response.data.data;
 				storeAuthTokens(accessToken, refreshToken);
-				return instance(originalRequest);
+				return request(originalRequest);
 			} else {
 				removeAuthTokens();
 				useAuthStore.setState({ profile: null });

@@ -29,12 +29,14 @@ const Avatar = ({
 					{createAvatarPlaceholder(alt)}
 				</p>
 			)}
-			<div
-				className={combineClasses(
-					classes["avatar__status"],
-					classes[`avatar__status--${status}`]
-				)}
-			></div>
+			{status && (
+				<div
+					className={combineClasses(
+						classes["avatar__status"],
+						classes[`avatar__status--${status}`]
+					)}
+				></div>
+			)}
 		</div>
 	);
 };

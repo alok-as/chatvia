@@ -7,6 +7,9 @@ const Contact = {
 	get() {
 		return request.get("/contact");
 	},
+	chats() {
+		return request.get("/contact/chats");
+	},
 };
 
 export default Contact;

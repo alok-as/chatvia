@@ -8,6 +8,10 @@ const socket = io(generateServerOrigin(), {
 	path: "/connection/",
 });
 
+socket.onAny((event, ...args) => {
+	console.log("Event notifier", event, args);
+});
+
 export const useChatStore = create((set) => ({
 	socket,
 }));

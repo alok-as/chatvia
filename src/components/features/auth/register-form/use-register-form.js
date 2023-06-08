@@ -23,8 +23,9 @@ const useRegisterForm = () => {
 			setUserProfile(profile);
 			toast.success(message);
 		} catch (error) {
-			console.log("Error registering user", error);
-			toast.error("Error registering user");
+			const message =
+				error?.response?.data?.message || "Error registering user";
+			toast.error(message);
 		}
 	};
 

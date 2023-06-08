@@ -1,8 +1,20 @@
 .recent-chats {
 	height: 100%;
 
-	&__heading {
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		margin-bottom: 2.4rem;
+	}
+
+	&__icon {
+		svg {
+			width: 1.8rem;
+			height: 1.8rem;
+			fill: var(--color-violet-1);
+			margin-right: 1.6rem;
+		}
 	}
 
 	&__subheading {
