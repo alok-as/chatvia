@@ -1,0 +1,105 @@
+.message {
+	$this: &;
+	max-width: 50%;
+	display: flex;
+	gap: 1rem;
+
+	&:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+
+	&__avatar {
+		align-self: flex-end;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	&__content {
+		position: relative;
+		overflow-wrap: break-word;
+		hyphens: auto;
+	}
+
+	&__username {
+		font-size: 1.4rem;
+	}
+
+	&--sent,
+	&--received {
+		#{$this}__content {
+			padding: 1.2rem 2rem;
+			display: flex;
+			flex-direction: column;
+
+			&::before {
+				content: "";
+				position: absolute;
+				border-style: solid;
+				border-width: 5px;
+				bottom: -10px;
+			}
+		}
+	}
+
+	&--sent {
+		align-self: flex-end;
+
+		#{$this}__sender {
+			order: 2;
+		}
+
+		#{$this}__wrapper {
+			align-items: flex-end;
+		}
+
+		#{$this}__content {
+			border-radius: var(--message-sent-border-radius);
+			color: var(--message-sent-color);
+			background-color: var(--message-sent-bg);
+
+			&::before {
+				border-color: var(--message-sent-bg) var(--message-sent-bg)
+					transparent transparent;
+				left: auto;
+				right: 0;
+			}
+
+			#{$this}__timestamp {
+				color: var(--message-sent-timestamp-color);
+				align-self: flex-start;
+			}
+		}
+	}
+
+	&--received {
+		align-self: flex-start;
+
+		#{$this}__content {
+			border-radius: var(--message-received-border-radius);
+			color: var(--message-received-color);
+			background-color: var(--message-received-bg);
+
+			&::before {
+				border-color: var(--message-received-bg) transparent transparent
+					var(--message-received-bg);
+				left: 0;
+				right: auto;
+			}
+
+			#{$this}__timestamp {
+				color: var(--message-received-timestamp-color);
+				align-self: flex-end;
+			}
+		}
+	}
+
+	&__sender {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+}

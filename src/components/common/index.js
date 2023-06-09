@@ -11,6 +11,7 @@ export { default as Icon } from "./icon";
 export { default as Input } from "./input";
 export { default as Label } from "./label";
 export { default as Logo } from "./logo";
+export { default as Message } from "./message";
 export { default as Paragraph } from "./paragraph";
 export { default as PersonalDetails } from "./personal-details";
 export { default as Row } from "./row";

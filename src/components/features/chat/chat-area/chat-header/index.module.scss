@@ -1,0 +1,33 @@
+.chat-header {
+	position: relative;
+	z-index: 100;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--chat-header-padding);
+	border-bottom: 1px solid var(--chat-header-border-color);
+
+	&__details {
+		display: flex;
+		align-items: center;
+	}
+
+	&__avatar {
+		margin-right: 1rem;
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 3rem;
+	}
+
+	&__icon {
+		svg {
+			width: 2rem;
+			height: 2rem;
+			fill: var(--color-violet-1);
+			cursor: pointer;
+		}
+	}
+}

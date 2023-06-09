@@ -1,0 +1,41 @@
+.chat-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+	padding: var(--chat-footer-padding);
+
+	&__input {
+		flex-basis: 85%;
+	}
+
+	&__options {
+		flex: 1;
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: 2.4rem;
+	}
+
+	&__option {
+		cursor: pointer;
+	}
+
+	&__file {
+		display: none;
+	}
+
+	&__icon {
+		svg {
+			width: 1.8rem;
+			height: 1.8rem;
+			fill: var(--color-violet-2);
+		}
+	}
+}

@@ -15,6 +15,10 @@ const Layout = () => {
 	useEffect(() => {
 		socket.auth = { username: profile.username };
 		socket.connect();
+
+		socket.on("connect", () => {
+			socket.emit("identity", profile.username);
+		});
 	}, []);
 
 	return (

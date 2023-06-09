@@ -174,4 +174,28 @@
 	--avatar-placeholder-bg: rgba(114, 105, 239, 0.25);
 	--avatar-placeholder-color: var(--color-violet-2);
 	--avatar-border-color: var(--color-white-4);
+
+	// CHAT AREA
+	--chat-area-bg: var(--color-white-1);
+
+	// CHAT HEADER
+	--chat-header-padding: 2.4rem;
+	--chat-header-border-color: var(--color-white-4);
+
+	// CHAT BODY
+	--chat-body-border-color: var(--color-white-4);
+
+	//  MESSAGE
+	--message-sent-bg: var(--color-white-3);
+	--message-sent-color: var(--color-black-3);
+	--message-sent-border-radius: 0.8rem 0.8rem 0 0.8rem;
+	--message-sent-timestamp-color: var(--color-violet-1);
+
+	--message-received-bg: var(--color-violet-2);
+	--message-received-color: var(--color-white-1);
+	--message-received-border-radius: 0.8rem 0.8rem 0.8rem 0;
+	--message-received-timestamp-color: var(--color-grey-2);
+
+	// CHAT FOOTER
+	--chat-footer-padding: 2.4rem;
 }

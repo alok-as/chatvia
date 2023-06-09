@@ -1,5 +1,8 @@
 .chat {
-	display: flex;
 	flex: 1;
+	background-color: var(--chat-area-bg);
+
+	display: flex;
 	height: var(--doc-height);
+	flex-direction: column;
 }

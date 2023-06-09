@@ -9,9 +9,11 @@ const socket = io(generateServerOrigin(), {
 });
 
 socket.onAny((event, ...args) => {
-	console.log("Event notifier", event, args);
+	console.log("Event notifier", event, ...args);
 });
 
 export const useChatStore = create((set) => ({
 	socket,
+	currentChat: null,
+	setCurrentChat: (value) => set({ currentChat: value }),
 }));
