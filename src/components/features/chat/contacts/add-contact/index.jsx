@@ -1,14 +1,14 @@
 import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 
-import { Heading, Icon, Button, Backdrop } from "../../../common";
-import { Form } from "../../../form";
+import { Heading, Icon, Backdrop } from "../../../../common";
+import { Form } from "../../../../form";
 
-import Portal from "../../portal";
-import Contact from "../../../../services/contact";
+import Portal from "../../../portal";
+import Contact from "../../../../../services/contact";
 
 import classes from "./index.module.scss";
-import { useOutsideClick } from "../../../../hooks";
+import { useOutsideClick } from "../../../../../hooks";
 
 const fields = [
 	{

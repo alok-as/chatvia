@@ -1,19 +1,18 @@
-import React from "react";
-
-import classes from "./index.module.scss";
 import { Avatar, Icon, Heading } from "../../../../common";
 
-const ChatHeader = () => {
+import classes from "./index.module.scss";
+
+const ChatHeader = ({ user }) => {
 	return (
 		<div className={classes["chat-header"]}>
 			<div className={classes["chat-header__details"]}>
 				<Avatar
-					imgSrc=""
+					imgSrc={user.imageUrl}
 					className={classes["chat-header__avatar"]}
 					status="online"
-					alt="Nitin Sharma"
+					alt={user.name}
 				/>
-				<Heading type="h3">Nitin Sharma</Heading>
+				<Heading type="h3">{user.name}</Heading>
 			</div>
 			<div className={classes["chat-header__actions"]}>
 				<Icon name="search" className={classes["chat-header__icon"]} />

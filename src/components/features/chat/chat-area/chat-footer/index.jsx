@@ -5,7 +5,7 @@ import FormInput from "../../../../form/form-input";
 
 import classes from "./index.module.scss";
 
-const ChatFooter = () => {
+const ChatFooter = ({ sendMessage }) => {
 	const documentRef = useRef();
 
 	const [message, setMessage] = useState("");
@@ -20,13 +20,13 @@ const ChatFooter = () => {
 
 	return (
 		<div className={classes["chat-footer"]}>
-			<form className={classes["chat-footer__input"]}>
+			<div className={classes["chat-footer__input"]}>
 				<FormInput
 					value={message}
 					placeholder="Enter Message..."
 					onChange={onInputChangeHandler}
 				/>
-			</form>
+			</div>
 			<div className={classes["chat-footer__options"]}>
 				<ul className={classes["chat-footer__list"]}>
 					<li className={classes["chat-footer__option"]}>
@@ -52,7 +52,10 @@ const ChatFooter = () => {
 					</li>
 
 					<li className={classes["chat-footer__option"]}>
-						<Button icon="send" />
+						<Button
+							icon="send"
+							onClick={() => sendMessage(message)}
+						/>
 					</li>
 				</ul>
 			</div>

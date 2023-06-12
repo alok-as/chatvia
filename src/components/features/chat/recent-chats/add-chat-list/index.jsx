@@ -1,7 +1,7 @@
-import { ChatCard } from "../../../common";
+import { ChatCard } from "../../../../common";
 import classes from "./index.module.scss";
 
-const AddChatList = ({ title, contacts, invite }) => {
+const AddChatList = ({ title, contacts, onSelect, invite }) => {
 	return (
 		<div className={classes["add-chat-list"]}>
 			<p className={classes["add-chat-list__title"]}>{title}</p>
@@ -12,6 +12,9 @@ const AddChatList = ({ title, contacts, invite }) => {
 						name={contact.name}
 						email={contact.email}
 						invite={invite}
+						onClick={() =>
+							onSelect(contact.contactId, contact.name)
+						}
 					/>
 				))}
 			</ul>

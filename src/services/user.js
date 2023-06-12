@@ -7,6 +7,9 @@ const User = {
 	login(data) {
 		return request.post("/user/login", data);
 	},
+	getProfile(userId) {
+		return request.get(`/user/${userId}`);
+	},
 };
 
 export default User;

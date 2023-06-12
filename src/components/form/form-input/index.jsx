@@ -11,6 +11,8 @@ const FormInput = ({
 	placeholder,
 	icon,
 	disabled,
+	onChange,
+	value,
 }) => {
 	return (
 		<div className={classes["form-input"]}>
@@ -30,6 +32,8 @@ const FormInput = ({
 					name={name}
 					placeholder={placeholder}
 					disabled={disabled}
+					value={value}
+					onChange={onChange}
 				/>
 			</div>
 		</div>

@@ -10,21 +10,22 @@ import classes from "./index.module.scss";
 
 const Layout = () => {
 	const socket = useChatStore((state) => state.socket);
+	const roomId = useChatStore((state) => state.roomId);
 	const profile = useAuthStore((state) => state.profile);
 
 	useEffect(() => {
-		socket.auth = { username: profile.username };
+		socket.auth = { id: profile.id };
 		socket.connect();
 
 		socket.on("connect", () => {
-			socket.emit("identity", profile.username);
+			socket.emit("identity", profile.id);
 		});
 	}, []);
 
 	return (
 		<div className={classes["layout"]}>
 			<Sidebar />
-			<ChatArea />
+			{roomId && <ChatArea />}
 		</div>
 	);
 };

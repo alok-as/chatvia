@@ -1,6 +1,6 @@
 import classes from "./index.module.scss";
 
-const Input = ({ id, type, name, placeholder, disabled }) => {
+const Input = ({ id, type, name, placeholder, disabled, value, onChange }) => {
 	return (
 		<input
 			id={id}
@@ -8,6 +8,8 @@ const Input = ({ id, type, name, placeholder, disabled }) => {
 			name={name}
 			placeholder={placeholder}
 			disabled={disabled}
+			value={value}
+			onChange={onChange}
 			className={classes["input"]}
 		/>
 	);

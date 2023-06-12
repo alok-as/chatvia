@@ -1,7 +1,7 @@
-import { Avatar, Heading, Timestamp } from "../../../common";
+import { Avatar, Heading, Timestamp } from "../../../../common";
 
 import classes from "./index.module.scss";
-import { combineClasses } from "../../../../utils";
+import { combineClasses } from "../../../../../utils";
 
 const UserCard = ({
 	status,

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+import AddContact from "./add-contact";
 import { Heading, ContactGroup, Search, Icon } from "../../../common";
 
 import classes from "./index.module.scss";
-import AddContact from "../add-contact";
 import Contact from "../../../../services/contact";
 
 const getContactsMap = (data) => {
