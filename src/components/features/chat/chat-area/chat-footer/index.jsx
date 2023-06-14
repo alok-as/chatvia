@@ -18,6 +18,21 @@ const ChatFooter = ({ sendMessage }) => {
 		documentRef.current.click();
 	};
 
+	const onEnterHandler = (event) => {
+		if (event.charCode === 13 || event.which === 13) {
+			sendMessageHandler();
+		}
+	};
+
+	const sendMessageHandler = async () => {
+		try {
+			await sendMessage(message);
+			setMessage("");
+		} catch (error) {
+			console.log("Error sending message");
+		}
+	};
+
 	return (
 		<div className={classes["chat-footer"]}>
 			<div className={classes["chat-footer__input"]}>
@@ -25,6 +40,7 @@ const ChatFooter = ({ sendMessage }) => {
 					value={message}
 					placeholder="Enter Message..."
 					onChange={onInputChangeHandler}
+					onKeyDown={onEnterHandler}
 				/>
 			</div>
 			<div className={classes["chat-footer__options"]}>
@@ -52,10 +68,7 @@ const ChatFooter = ({ sendMessage }) => {
 					</li>
 
 					<li className={classes["chat-footer__option"]}>
-						<Button
-							icon="send"
-							onClick={() => sendMessage(message)}
-						/>
+						<Button icon="send" onClick={sendMessageHandler} />
 					</li>
 				</ul>
 			</div>

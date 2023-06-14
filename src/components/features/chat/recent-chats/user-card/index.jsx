@@ -28,7 +28,7 @@ const UserCard = ({
 				/>
 			</div>
 			<div className={classes["message__content"]}>
-				<div>
+				<div className={classes["message__title"]}>
 					<Heading type="h3">{name}</Heading>
 					<p className={classes["message__text"]}>{text}</p>
 				</div>

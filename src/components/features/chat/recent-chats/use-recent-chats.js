@@ -11,6 +11,7 @@ const useRecentChats = () => {
 	const ref = useRef();
 	const profile = useAuthStore((state) => state.profile);
 
+	const socket = useChatStore((state) => state.socket);
 	const roomId = useChatStore((state) => state.roomId);
 	const setRoomId = useChatStore((state) => state.setRoomId);
 	const setChatUser = useChatStore((state) => state.setChatUser);
@@ -64,13 +65,16 @@ const useRecentChats = () => {
 
 	const transformRecentChats = (chatData, contacts) => {
 		const recentChats = chatData.map((chat) => {
-			const sentTo = chat.roomInfo
+			const sentTo = chat.recipients
 				.flat()
 				.find((user) => user._id !== profile.id);
 
 			const contact = contacts.find(
 				(contact) => contact.contactId === sentTo._id
 			);
+
+			// Re Think Later
+			socket.emit("subscribe", chat.chatRoomId);
 
 			return {
 				chatRoomId: chat.chatRoomId,

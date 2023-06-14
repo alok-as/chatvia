@@ -12,6 +12,7 @@ const FormInput = ({
 	icon,
 	disabled,
 	onChange,
+	onKeyDown,
 	value,
 }) => {
 	return (
@@ -34,6 +35,7 @@ const FormInput = ({
 					disabled={disabled}
 					value={value}
 					onChange={onChange}
+					onKeyDown={onKeyDown}
 				/>
 			</div>
 		</div>

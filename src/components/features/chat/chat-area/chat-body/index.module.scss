@@ -1,4 +1,9 @@
 .chat-body {
 	flex: 1;
+	padding: var(--chat-body-padding);
 	border-bottom: 1px solid var(--chat-body-border-color);
+
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
 }

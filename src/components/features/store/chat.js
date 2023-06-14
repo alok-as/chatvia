@@ -9,10 +9,6 @@ const socket = io(generateServerOrigin(), {
 	path: "/connection/",
 });
 
-socket.onAny((event, ...args) => {
-	console.log("Event notifier", event, ...args);
-});
-
 const chatStore = (set) => ({
 	socket,
 	roomId: null,
@@ -30,6 +26,8 @@ export const useChatStore = create(
 const conversationStore = (set) => ({
 	conversation: [],
 	setConversation: (conversation) => set({ conversation }),
+	addMessageToConversation: (message) =>
+		set((state) => ({ conversation: [...state.conversation, message] })),
 });
 
 export const useConversationStore = create(

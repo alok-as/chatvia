@@ -18,6 +18,10 @@
 		margin-right: 1.5rem;
 	}
 
+	&__title {
+		flex: 1;
+	}
+
 	&__content {
 		display: flex;
 		flex: 1;
@@ -29,5 +33,10 @@
 		font-size: 1.4rem;
 		color: var(--user-card-active-color);
 		margin-top: 4px;
+
+		width: 20rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
