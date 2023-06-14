@@ -6,7 +6,9 @@ const profileCache = getUserProfile();
 
 const store = (set) => ({
 	profile: profileCache ?? null,
+	onlineUsers: null,
 	setUserProfile: (value) => set({ profile: value }),
+	setOnlineUsers: (value) => set({ onlineUsers: value }),
 });
 
 export const useAuthStore = create(

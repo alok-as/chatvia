@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "react";
 
 import ChatMessage from "../chat-message";
-
 import classes from "./index.module.scss";
 
-const ChatBody = ({ userId, conversation = [] }) => {
+const ChatBody = ({ currentUserId, conversation = [], receiverName }) => {
 	const lastMessageRef = useRef();
 
 	useEffect(() => {
@@ -13,16 +12,21 @@ const ChatBody = ({ userId, conversation = [] }) => {
 
 	return (
 		<div className={classes["chat-body"]}>
-			{conversation.map(({ _id, sender, message, createdAt }) => (
+			{conversation.map(({ id, sender, message, createdAt }) => (
 				<>
 					<ChatMessage
-						key={_id}
-						type={userId === sender._id ? "sent" : "received"}
+						key={id}
+						type={
+							currentUserId === sender._id ? "sent" : "received"
+						}
 						timestamp={createdAt}
 						imageUrl={sender.imageUrl}
-						alt={sender.username}
-						name={userId === sender._id ? "Me" : sender.username}
-						sender={sender}
+						alt={receiverName ?? sender.username}
+						name={
+							currentUserId === sender._id
+								? "Me"
+								: receiverName ?? sender.username
+						}
 					>
 						{message}
 					</ChatMessage>

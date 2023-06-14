@@ -19,6 +19,8 @@ const ChatArea = () => {
 	const receiver = useChatStore((state) => state.receiver);
 	const setChatUser = useChatStore((state) => state.setChatUser);
 
+	const onlineUsers = useAuthStore((state) => state.onlineUsers);
+
 	const conversation = useConversationStore((state) => state.conversation);
 	const setConversation = useConversationStore(
 		(state) => state.setConversation
@@ -40,6 +42,11 @@ const ChatArea = () => {
 		return Chat.sendMessage({ chatRoomId: roomId, message });
 	};
 
+	const isUserOnline = (onlineUsers, receiverId) => {
+		if (!onlineUsers) return false;
+		return Object.values(onlineUsers).includes(receiverId);
+	};
+
 	useEffect(() => {
 		socket.emit("subscribe", roomId, receiverId);
 		getChatDataHandler(receiverId, roomId);
@@ -49,10 +56,21 @@ const ChatArea = () => {
 		};
 	}, [receiverId, roomId]);
 
+	console.log("receiver", receiver);
+
 	return (
 		<div className={classes["chat"]}>
-			<ChatHeader user={receiver} />
-			<ChatBody userId={profile.id} conversation={conversation} />
+			<ChatHeader
+				user={receiver}
+				status={
+					isUserOnline(onlineUsers, receiverId) ? "online" : "offline"
+				}
+			/>
+			<ChatBody
+				currentUserId={profile.id}
+				conversation={conversation}
+				receiverName={receiver?.name}
+			/>
 			<ChatFooter sendMessage={sendMessageHandler} />
 		</div>
 	);

@@ -1,15 +1,14 @@
 import { Avatar, Icon, Heading } from "../../../../common";
-
 import classes from "./index.module.scss";
 
-const ChatHeader = ({ user }) => {
+const ChatHeader = ({ user, status }) => {
 	return (
 		<div className={classes["chat-header"]}>
 			<div className={classes["chat-header__details"]}>
 				<Avatar
 					imgSrc={user.imageUrl}
 					className={classes["chat-header__avatar"]}
-					status="online"
+					status={status}
 					alt={user.name}
 				/>
 				<Heading type="h3">{user.name}</Heading>

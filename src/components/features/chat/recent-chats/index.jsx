@@ -58,6 +58,7 @@ const Recent = () => {
 						imageUrl,
 						sentAt,
 						userId,
+						isOnline,
 					}) => (
 						<UserCard
 							key={chatRoomId}
@@ -66,7 +67,7 @@ const Recent = () => {
 							text={message}
 							timestamp={sentAt}
 							isActive={chatRoomId === activeRoomId}
-							isOnline={false}
+							isOnline={isOnline}
 							onClick={() =>
 								initiateChatHandler(chatRoomId, userId, name)
 							}

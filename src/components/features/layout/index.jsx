@@ -14,6 +14,7 @@ const Layout = () => {
 	const socket = useChatStore((state) => state.socket);
 	const roomId = useChatStore((state) => state.roomId);
 	const profile = useAuthStore((state) => state.profile);
+	const setOnlineUsers = useAuthStore((state) => state.setOnlineUsers);
 
 	const addMessageToConversation = useConversationStore(
 		(state) => state.addMessageToConversation
@@ -27,6 +28,10 @@ const Layout = () => {
 
 		socket.on("connect", () => {
 			socket.emit("identity", profile.id);
+
+			socket.on("users status", (onlineUsers) => {
+				setOnlineUsers(onlineUsers);
+			});
 
 			socket.on("new message", (message) => {
 				addMessageToConversation(message);

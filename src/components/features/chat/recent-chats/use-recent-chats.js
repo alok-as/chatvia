@@ -13,6 +13,8 @@ const useRecentChats = () => {
 
 	const socket = useChatStore((state) => state.socket);
 	const roomId = useChatStore((state) => state.roomId);
+	const onlineUsers = useAuthStore((state) => state.onlineUsers);
+
 	const setRoomId = useChatStore((state) => state.setRoomId);
 	const setChatUser = useChatStore((state) => state.setChatUser);
 	const setReceiverId = useChatStore((state) => state.setReceiverId);
@@ -116,9 +118,26 @@ const useRecentChats = () => {
 		setChatUser({ name });
 	};
 
+	const updateUsersStatusHandler = () => {
+		const onlineUsersId = Object.values(onlineUsers);
+
+		const updatedChats = recentChats.map((chat) => ({
+			...chat,
+			isOnline: onlineUsersId.includes(chat.userId) ? true : false,
+		}));
+
+		setRecentChats(updatedChats);
+	};
+
 	useEffect(() => {
 		getChatDataHandler();
 	}, []);
+
+	useEffect(() => {
+		if (onlineUsers) {
+			updateUsersStatusHandler();
+		}
+	}, [onlineUsers]);
 
 	return {
 		ref,
