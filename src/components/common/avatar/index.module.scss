@@ -9,6 +9,11 @@
 	&--small {
 		width: 3.5rem;
 		height: 3.5rem;
+
+		@include respond(lg) {
+			width: 2.8rem;
+			height: 2.8rem;
+		}
 	}
 
 	&--large {

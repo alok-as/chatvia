@@ -1,5 +1,19 @@
 .navigation {
+	&__list {
+		display: flex;
+		flex-direction: column;
+
+		@include respond(lg) {
+			flex-direction: row;
+		}
+	}
+
 	&__icon {
 		fill: var(--tab-icon-fill-color);
+
+		svg {
+			width: 2.4rem;
+			height: 2.4rem;
+		}
 	}
 }

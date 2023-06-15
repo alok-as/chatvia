@@ -5,7 +5,7 @@ import {
 	storeAuthTokens,
 	removeAuthTokens,
 } from "../utils";
-import { useAuthStore } from "../components/features/store/auth";
+import { useAuthStore } from "../store/auth";
 
 const baseURL = generateServerOrigin();
 

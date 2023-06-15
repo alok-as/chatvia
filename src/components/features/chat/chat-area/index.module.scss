@@ -5,4 +5,12 @@
 	display: flex;
 	height: var(--doc-height);
 	flex-direction: column;
+
+	@include respond(lg) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100vw;
+		z-index: 200;
+	}
 }

@@ -1,3 +1,4 @@
+import { isUserOnline } from "../../../../utils";
 import {
 	Heading,
 	Icon,
@@ -8,9 +9,18 @@ import {
 	PersonalDetails,
 	Attachment,
 } from "../../../common";
+
+import { useAuthStore } from "../../../../store/auth";
 import classes from "./index.module.scss";
 
 const Profile = () => {
+	const { profile, onlineUsers } = useAuthStore((state) => ({
+		profile: state.profile,
+		onlineUsers: state.onlineUsers,
+	}));
+
+	const isOnline = isUserOnline(onlineUsers, profile.id);
+
 	return (
 		<div className={classes["profile"]}>
 			<div className={classes["profile__header"]}>
@@ -20,28 +30,24 @@ const Profile = () => {
 
 			<div className={classes["profile__info"]}>
 				<Avatar
-					imgSrc="http://chatvia-light.react.themesbrand.com/static/media/avatar-1.3921191a8acf79d3e907.jpg"
+					imgSrc={profile.imageUrl}
 					className="margin-bottom-small"
 					type="large"
 					alt="UserName"
 					withBorder={true}
 				/>
 				<Heading type="h3" className={classes["profile__heading"]}>
-					Alok Sharma
+					{profile.username}
 				</Heading>
-				<Status status="online" />
+				<Status status={isOnline ? "online" : "offline"} />
 			</div>
 			<div className={classes["profile__description"]}>
-				<Paragraph size="small">
-					If several languages coalesce, the grammar of the resulting
-					language is more simple and regular than that of the
-					individual.
-				</Paragraph>
+				<Paragraph size="small">{profile.description}</Paragraph>
 			</div>
 
 			<div className={classes["profile__details"]}>
 				<Accordian title="About" icon="user">
-					<PersonalDetails />
+					<PersonalDetails profile={profile} />
 				</Accordian>
 				<Accordian title="Attached Files" icon="attachment">
 					<div>

@@ -84,7 +84,7 @@ export const removeAuthTokens = () => {
 
 export const getAuthTokens = () => {
 	const accessToken = getKeyFromLocalStorage("accessToken");
-	const refreshToken = getKeyFromLocalStorage("accessToken");
+	const refreshToken = getKeyFromLocalStorage("refreshToken");
 	return { accessToken, refreshToken };
 };
 
@@ -138,3 +138,10 @@ export const formatTimestamp = (timestamp) => {
 		sameElse: "DD/MM/YYYY",
 	});
 };
+
+export const isUserOnline = (onlineUsers, userId) => {
+	if (!onlineUsers) return false;
+	return Object.values(onlineUsers).includes(userId);
+};
+
+export const getUserSelectedTheme = () => getKeyFromLocalStorage("theme");

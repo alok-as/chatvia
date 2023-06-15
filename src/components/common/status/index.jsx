@@ -2,8 +2,8 @@ import { combineClasses } from "../../../utils";
 import classes from "./index.module.scss";
 
 const TextSpecs = {
-	online: "Active",
-	offline: "Inactive",
+	online: "Online",
+	offline: "Offline",
 };
 
 const Status = ({ status }) => {

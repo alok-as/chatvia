@@ -1,0 +1,46 @@
+.recipient-profile {
+	flex-basis: 25%;
+	background-color: var(--sidebar-content-bg);
+	padding: 2.4rem;
+
+	@include respond(lg) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100vw;
+		z-index: 250;
+		height: 100%;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	&__icon {
+		svg {
+			transform: rotate(90deg);
+			width: 2rem;
+			height: 2rem;
+			fill: var(--profile-icon-color);
+		}
+	}
+
+	&__heading {
+		margin-bottom: 2.4rem;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		padding: 2.4rem 0;
+		margin-bottom: 2.4rem;
+	}
+
+	&__details {
+		margin-top: 2.4rem;
+	}
+}

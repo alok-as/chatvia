@@ -5,6 +5,18 @@
 	border-radius: 0.4rem;
 	border: 0 solid var(--color-white-3);
 
+	@include respond(lg) {
+		width: 50%;
+	}
+
+	@include respond(md) {
+		width: 66.66667%;
+	}
+
+	@include respond(sm) {
+		width: 100%;
+	}
+
 	&__logo {
 		margin-bottom: var(--margin-lg);
 	}

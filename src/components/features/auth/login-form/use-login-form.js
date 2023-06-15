@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 import User from "../../../../services/user";
-import { useAuthStore } from "../../store/auth";
+import { useAuthStore } from "../../../../store/auth";
 import { storeAuthTokens, storeUserProfile } from "../../../../utils";
 
 const useLoginForm = () => {
@@ -24,7 +24,6 @@ const useLoginForm = () => {
 			storeUserProfile(profile);
 
 			setUserProfile(profile);
-			toast.success(message);
 		} catch (error) {
 			const message =
 				error?.response?.data?.message || "Error logging in user!";

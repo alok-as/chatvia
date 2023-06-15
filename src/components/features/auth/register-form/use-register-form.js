@@ -1,8 +1,9 @@
 import { toast } from "react-toastify";
 
-import { useAuthStore } from "../../store/auth";
-import { storeAuthTokens, storeUserProfile } from "../../../../utils";
+import { useAuthStore } from "../../../../store/auth";
 import User from "../../../../services/user";
+
+import { storeAuthTokens, storeUserProfile } from "../../../../utils";
 
 const useRegisterForm = () => {
 	const setUserProfile = useAuthStore((state) => state.setUserProfile);
@@ -21,7 +22,6 @@ const useRegisterForm = () => {
 			storeUserProfile(profile);
 
 			setUserProfile(profile);
-			toast.success(message);
 		} catch (error) {
 			const message =
 				error?.response?.data?.message || "Error registering user";

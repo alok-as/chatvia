@@ -6,27 +6,24 @@ import classes from "./index.module.scss";
 const details = [
 	{
 		id: nanoid(),
-		label: "Name",
-		value: "Alok Sharma",
+		label: "User Name",
+		field: "username",
 	},
 	{
 		id: nanoid(),
 		label: "Email",
-		value: "alok.sharma61630@gmail.com",
-	},
-	{
-		id: nanoid(),
-		label: "Location",
-		value: "New Delhi, India",
+		field: "email",
 	},
 ];
 
-const PersonalDetails = forwardRef((_, ref) => (
+const PersonalDetails = forwardRef(({ profile }, ref) => (
 	<div className={classes["personal-details"]} ref={ref}>
-		{details.map(({ id, label, value }) => (
+		{details.map(({ id, label, field }) => (
 			<div key={id} className={classes["personal-details__item"]}>
 				<p className={classes["personal-details__label"]}>{label}</p>
-				<p className={classes["personal-details__value"]}>{value}</p>
+				<p className={classes["personal-details__value"]}>
+					{profile[field]}
+				</p>
 			</div>
 		))}
 	</div>

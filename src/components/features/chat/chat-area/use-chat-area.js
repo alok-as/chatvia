@@ -4,20 +4,23 @@ import { shallow } from "zustand/shallow";
 import Chat from "../../../../services/chat";
 import User from "../../../../services/user";
 
-import { useAuthStore } from "../../store/auth";
-import { useChatStore, useConversationStore } from "../../store/chat";
+import { useAuthStore } from "../../../../store/auth";
+import { useChatStore, useConversationStore } from "../../../../store/chat";
+import { useLayoutStore } from "../../../../store/layout";
 
 const useChatArea = () => {
-	const { socket, roomId, receiver, receiverId, setChatUser } = useChatStore(
-		(state) => ({
-			socket: state.socket,
-			roomId: state.roomId,
-			receiverId: state.receiverId,
-			receiver: state.receiver,
-			setChatUser: state.setChatUser,
-		}),
-		shallow
-	);
+	const { socket, roomId, receiver, receiverId, setChatUser, resetChat } =
+		useChatStore(
+			(state) => ({
+				socket: state.socket,
+				roomId: state.roomId,
+				receiverId: state.receiverId,
+				receiver: state.receiver,
+				setChatUser: state.setChatUser,
+				resetChat: state.resetChat,
+			}),
+			shallow
+		);
 
 	const { onlineUsers, profile } = useAuthStore(
 		(state) => ({
@@ -35,6 +38,10 @@ const useChatArea = () => {
 		shallow
 	);
 
+	const setIsRecipientProfileVisible = useLayoutStore(
+		(state) => state.setIsRecipientProfileVisible
+	);
+
 	const getChatDataHandler = async (receiverId, roomId) => {
 		const [profile, conversation] = await Promise.all([
 			User.getProfile(receiverId),
@@ -45,13 +52,11 @@ const useChatArea = () => {
 		setConversation(conversation.data);
 	};
 
+	const openRecipientProfileHandler = () =>
+		setIsRecipientProfileVisible(true);
+
 	const sendMessageHandler = (message) =>
 		Chat.sendMessage({ chatRoomId: roomId, message });
-
-	const isUserOnline = (onlineUsers, receiverId) => {
-		if (!onlineUsers) return false;
-		return Object.values(onlineUsers).includes(receiverId);
-	};
 
 	useEffect(() => {
 		socket.emit("subscribe", roomId, receiverId);
@@ -64,12 +69,13 @@ const useChatArea = () => {
 
 	return {
 		conversation,
-		isUserOnline,
 		onlineUsers,
 		profile,
 		receiver,
 		receiverId,
 		sendMessageHandler,
+		resetChat,
+		openRecipientProfileHandler,
 	};
 };
 

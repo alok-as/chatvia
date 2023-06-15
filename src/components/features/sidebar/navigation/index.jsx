@@ -39,7 +39,7 @@ const tabs = [
 
 const Navigation = () => (
 	<nav className={classes["navigation"]}>
-		<ul>
+		<ul className={classes["navigation__list"]}>
 			{tabs.map((tab) => (
 				<Tab key={tab.key} title={tab.title} to={tab.to} isLink={true}>
 					{tab.icon}

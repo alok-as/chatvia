@@ -1,8 +1,14 @@
 .sidebar {
 	height: var(--doc-height);
 	flex-basis: 30%;
-	display: flex;
 	box-shadow: 0 2px 4px rgba(15, 34, 58, 0.12);
+
+	display: flex;
+
+	@include respond(lg) {
+		flex-basis: 100%;
+		flex-direction: column;
+	}
 
 	&__navigation {
 		flex-basis: 15%;
@@ -13,6 +19,14 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
+
+		@include respond(lg) {
+			flex-basis: 0;
+			order: 2;
+			flex-direction: row;
+
+			padding: 5px;
+		}
 	}
 
 	&__content {
@@ -24,5 +38,9 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+	}
+
+	&__icon {
+		fill: var(--tab-icon-fill-color);
 	}
 }

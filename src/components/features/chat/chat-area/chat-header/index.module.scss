@@ -10,10 +10,7 @@
 	&__details {
 		display: flex;
 		align-items: center;
-	}
-
-	&__avatar {
-		margin-right: 1rem;
+		gap: 1rem;
 	}
 
 	&__actions {
@@ -28,6 +25,21 @@
 			height: 2rem;
 			fill: var(--color-violet-1);
 			cursor: pointer;
+		}
+	}
+
+	&__arrow {
+		display: none;
+
+		svg {
+			width: 2rem;
+			height: 2rem;
+			color: var(--color-violet-1);
+			cursor: pointer;
+		}
+
+		@include respond(lg) {
+			display: initial;
 		}
 	}
 }

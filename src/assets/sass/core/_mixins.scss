@@ -1,0 +1,53 @@
+// MEDIA QUERY MANAGER
+$grid-breakpoints: (
+	xs: 0,
+	sm: 36em,
+	md: 48em,
+	lg: 62em,
+	xl: 75em,
+	xxl: 87.5em,
+);
+
+@mixin respond($breakpoint) {
+	// xs - 0 - 0
+	@if ($breakpoint == xs) {
+		@media (max-width: map-get($grid-breakpoints, "xs")) {
+			@content;
+		}
+	}
+
+	// sm - 576px - 36em
+	@if ($breakpoint == sm) {
+		@media (max-width: map-get($grid-breakpoints, "sm")) {
+			@content;
+		}
+	}
+
+	// md - 768px - 48em
+	@if ($breakpoint == md) {
+		@media (max-width: map-get($grid-breakpoints, "md")) {
+			@content;
+		}
+	}
+
+	// lg - 992px - 62em
+	@if ($breakpoint == lg) {
+		@media (max-width: map-get($grid-breakpoints, "lg")) {
+			@content;
+		}
+	}
+
+	// xl - 1200px - 75em
+	@if ($breakpoint == xl) {
+		@media (max-width: map-get($grid-breakpoints, "xl")) {
+			@content;
+		}
+	}
+
+	// xxl - 1400px - 87.5em
+	@if ($breakpoint == xxl) {
+		@media (max-width: map-get($grid-breakpoints, "xxl")) {
+			@content;
+		}
+	}
+}

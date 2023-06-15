@@ -3,9 +3,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	}
 
-	&__icon {
-		fill: var(--tab-icon-fill-color);
+		@include respond(lg) {
+			flex-direction: row;
+		}
 	}
 }

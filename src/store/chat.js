@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-import { generateServerOrigin } from "../../../utils";
+import { generateServerOrigin } from "../utils";
 
 const socket = io(generateServerOrigin(), {
 	autoConnect: false,
@@ -17,6 +17,12 @@ const chatStore = (set) => ({
 	setRoomId: (roomId) => set({ roomId }),
 	setReceiverId: (receiverId) => set({ receiverId }),
 	setChatUser: (receiver) => set({ receiver }),
+	resetChat: () =>
+		set({
+			roomId: null,
+			receiverId: null,
+			receiver: null,
+		}),
 });
 
 export const useChatStore = create(

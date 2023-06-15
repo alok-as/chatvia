@@ -4,8 +4,8 @@ import { shallow } from "zustand/shallow";
 import Chat from "../../../../services/chat";
 import Contact from "../../../../services/contact";
 
-import { useAuthStore } from "../../store/auth";
-import { useChatStore } from "../../store/chat";
+import { useAuthStore } from "../../../../store/auth";
+import { useChatStore } from "../../../../store/chat";
 
 const searchParams = ["name", "message"];
 
@@ -122,9 +122,11 @@ const useRecentChats = () => {
 	};
 
 	const initiateChatHandler = (chatRoomId, userId, name) => {
-		setRoomId(chatRoomId);
-		setReceiverId(userId);
-		setChatUser({ name });
+		if (chatRoomId !== roomId) {
+			setRoomId(chatRoomId);
+			setReceiverId(userId);
+			setChatUser({ name });
+		}
 	};
 
 	const updateUsersStatusHandler = () => {

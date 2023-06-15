@@ -8,6 +8,10 @@
 
 	&:not(:last-child) {
 		margin-bottom: 2rem;
+
+		@include respond(lg) {
+			margin-bottom: 0;
+		}
 	}
 
 	&__item {
@@ -26,5 +30,10 @@
 				fill: var(--tab-active-icon-fill-color);
 			}
 		}
+	}
+
+	svg {
+		width: 2.4rem;
+		height: 2.4rem;
 	}
 }

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getUserProfile } from "../../../utils";
+import { getUserProfile } from "../utils";
 import { devtools } from "zustand/middleware";
 
 const profileCache = getUserProfile();
