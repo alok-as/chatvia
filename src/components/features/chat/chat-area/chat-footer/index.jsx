@@ -1,27 +1,17 @@
 import { useState, useRef } from "react";
 
 import { Button, Icon } from "../../../../common";
-import FormInput from "../../../../form/form-input";
+import InputEmoji from "react-input-emoji";
 
 import classes from "./index.module.scss";
+import "./react-emoji.scss";
 
 const ChatFooter = ({ sendMessage }) => {
 	const documentRef = useRef();
-
 	const [message, setMessage] = useState("");
-
-	const onInputChangeHandler = (e) => {
-		setMessage(e.target.value);
-	};
 
 	const uploadDocumentsHandler = () => {
 		documentRef.current.click();
-	};
-
-	const onEnterHandler = (event) => {
-		if (event.charCode === 13 || event.which === 13) {
-			sendMessageHandler();
-		}
 	};
 
 	const sendMessageHandler = async () => {
@@ -36,21 +26,17 @@ const ChatFooter = ({ sendMessage }) => {
 	return (
 		<div className={classes["chat-footer"]}>
 			<div className={classes["chat-footer__input"]}>
-				<FormInput
+				<InputEmoji
 					value={message}
-					placeholder="Enter Message..."
-					onChange={onInputChangeHandler}
-					onKeyDown={onEnterHandler}
+					onChange={setMessage}
+					onEnter={sendMessageHandler}
+					placeholder="Type a message..."
+					cleanOnEnter
+					borderRadius={0}
 				/>
 			</div>
 			<div className={classes["chat-footer__options"]}>
 				<ul className={classes["chat-footer__list"]}>
-					<li className={classes["chat-footer__option"]}>
-						<Icon
-							name="emoticon"
-							className={classes["chat-footer__icon"]}
-						/>
-					</li>
 					<li
 						className={classes["chat-footer__option"]}
 						onClick={uploadDocumentsHandler}

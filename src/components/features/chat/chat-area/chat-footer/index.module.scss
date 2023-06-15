@@ -1,12 +1,10 @@
 .chat-footer {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	gap: 2rem;
 	padding: var(--chat-footer-padding);
 
 	&__input {
-		flex-basis: 85%;
+		flex-basis: 90%;
 	}
 
 	&__options {
