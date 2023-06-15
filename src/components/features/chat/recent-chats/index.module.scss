@@ -1,7 +1,9 @@
 .recent-chats {
 	height: 100%;
+	display: flex;
+	flex-direction: column;
 
-	&__header {
+	&__title {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -17,11 +19,33 @@
 		}
 	}
 
+	&__body {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		overflow-y: hidden;
+	}
+
 	&__subheading {
 		margin-bottom: 1rem;
 	}
 
 	&__messages {
+		flex: 1;
 		overflow-y: auto;
+		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--color-grey-3);
+			border-radius: 1rem;
+		}
 	}
 }

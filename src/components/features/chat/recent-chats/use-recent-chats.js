@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { shallow } from "zustand/shallow";
 
 import Chat from "../../../../services/chat";
 import Contact from "../../../../services/contact";
+
 import { useAuthStore } from "../../store/auth";
 import { useChatStore } from "../../store/chat";
 
@@ -11,20 +13,25 @@ const useRecentChats = () => {
 	const ref = useRef();
 	const profile = useAuthStore((state) => state.profile);
 
-	const socket = useChatStore((state) => state.socket);
-	const roomId = useChatStore((state) => state.roomId);
-	const onlineUsers = useAuthStore((state) => state.onlineUsers);
+	const { socket, roomId, setChatUser, setRoomId, setReceiverId } =
+		useChatStore(
+			(state) => ({
+				socket: state.socket,
+				roomId: state.roomId,
+				setChatUser: state.setChatUser,
+				setRoomId: state.setRoomId,
+				setReceiverId: state.setReceiverId,
+			}),
+			shallow
+		);
 
-	const setRoomId = useChatStore((state) => state.setRoomId);
-	const setChatUser = useChatStore((state) => state.setChatUser);
-	const setReceiverId = useChatStore((state) => state.setReceiverId);
+	const onlineUsers = useAuthStore((state) => state.onlineUsers);
 
 	const [recentChats, setRecentChats] = useState([]);
 	const [registeredContacts, setRegisteredContacts] = useState([]);
 	const [nonRegisteredContacts, setNonRegisteredContacts] = useState([]);
 
 	const [searchInput, setSearchInput] = useState("");
-
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const onInputChangeHandler = (e) => {
@@ -110,6 +117,8 @@ const useRecentChats = () => {
 		setRecentChats(transformedChats);
 		setRegisteredContacts(registered);
 		setNonRegisteredContacts(nonRegistered);
+
+		socket.emit("get user status");
 	};
 
 	const initiateChatHandler = (chatRoomId, userId, name) => {

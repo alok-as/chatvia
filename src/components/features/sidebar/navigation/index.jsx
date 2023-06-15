@@ -37,23 +37,16 @@ const tabs = [
 	},
 ];
 
-const Navigation = () => {
-	return (
-		<nav className={classes["navigation"]}>
-			<ul>
-				{tabs.map((tab) => (
-					<Tab
-						key={tab.key}
-						title={tab.title}
-						to={tab.to}
-						isLink={true}
-					>
-						{tab.icon}
-					</Tab>
-				))}
-			</ul>
-		</nav>
-	);
-};
+const Navigation = () => (
+	<nav className={classes["navigation"]}>
+		<ul>
+			{tabs.map((tab) => (
+				<Tab key={tab.key} title={tab.title} to={tab.to} isLink={true}>
+					{tab.icon}
+				</Tab>
+			))}
+		</ul>
+	</nav>
+);
 
 export default Navigation;
