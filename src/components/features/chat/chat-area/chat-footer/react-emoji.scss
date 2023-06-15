@@ -2,7 +2,12 @@
 	padding: 1.2rem 2.2rem;
 	font-family: var(--primary-font);
 	font-size: 1.4rme;
-	background-color: rgba(230, 235, 245, 0.25) !important;
+	background-color: var(--react-emoji-input-bg) !important;
+	color: var(--react-emoji-input-color) !important;
+}
+
+.react-input-emoji--container {
+	border-color: var(--react-emoji-input-bg) !important;
 }
 
 .react-input-emoji--button--icon {

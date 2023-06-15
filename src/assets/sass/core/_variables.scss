@@ -1,4 +1,8 @@
 :root {
+	// THEME
+	--ON: initial;
+	--OFF: ;
+
 	// FONT
 	--primary-font: "Public Sans", sans-serif;
 
@@ -47,17 +51,133 @@
 
 	--color-pink-1: #ef476f;
 	--color-yellow-2: #ffd166;
+}
 
+body {
 	// MARGINS
 	--margin-xtra-small: 0.8rem;
 	--margin-small: 1rem;
 	--margin-medium: 2.4rem;
 	--margin-lg: 4.8rem;
 
+	// BODY
+	--body-bg: #{theme-color(var(--color-white-1), var(--color-black-6))};
+
+	// SIDE NAVIGATION
+	--sidebar-navigation-bg: #{theme-color(
+			var(--color-white-1),
+			var(--color-black-7)
+		)};
+
+	--sidebar-content-bg: #{theme-color(
+			var(--color-white-3),
+			var(--color-black-5)
+		)};
+
+	// TABS
+	--tab-active-color: #{theme-color(
+			var(--color-white-2),
+			var(--color-black-4)
+		)};
+	--tab-icon-fill-color: #{theme-color(
+			var(--color-grey-7),
+			var(--color-grey-8)
+		)};
+	--tab-active-icon-fill-color: var(--color-violet-2);
+	--tab-border-radius: 0.8rem;
+
+	// ACCORDIAN
+	--accordian-header-bg: #{theme-color(
+			var(--color-white-1),
+			var(--color-black-7)
+		)};
+
+	--accordian-color: #{theme-color(var(--color-black-2), var(--color-white-5))};
+	--accordian-icon-color: #{theme-color(
+			var(--color-black-2),
+			var(--color-white-5)
+		)};
+	--accordian-content-bg: #{theme-color(
+			var(--color-white-1),
+			var(--color-black-6)
+		)};
+
+	--accordian-border-color: #{theme-color(
+			var(--color-white-4),
+			var(--color-black-7)
+		)};
+
+	// PROFILE
+	--profile-icon-color: #{theme-color(
+			var(--color-violet-1),
+			var(--color-grey-5)
+		)};
+
+	//SEARCH
+	--search-input-color: #{theme-color(
+			var(--color-black-2),
+			var(--color-grey-8)
+		)};
+
+	--search-input-bg: #{theme-color(var(--color-grey-1), var(--color-black-7))};
+	--search-input-border-radius: 0.5rem;
+	--search-icons-color: var(--color-violet-1);
+
+	//AVATAR
+	--avatar-placeholder-bg: rgba(114, 105, 239, 0.25);
+	--avatar-placeholder-color: var(--color-violet-2);
+	--avatar-border-color: #{theme-color(
+			var(--color-white-4),
+			var(--color-black-7)
+		)};
+
+	// STATUS
+	--status-border-color: #{theme-color(
+			var(--color-white-1),
+			var(--color-black-1)
+		)};
+	--status-circle-color: #{theme-color(
+			var(--color-white-1),
+			var(--color-black-5)
+		)};
+	--status-color: #{theme-color(var(--color-violet-1), var(--color-grey-5))};
+	--status-online-color: var(--color-green-1);
+	--status-offline-color: var(--color-yellow-2);
+
+	// USER CARD
+	--user-card-active-bg: #{theme-color(
+			var(--color-grey-1),
+			var(--color-black-7)
+		)};
+	--user-card-color: #{theme-color(var(--color-violet-1), var(--color-grey-6))};
+
+	// PERSONAL DETAILS
+	--personal-details-label-color: #{theme-color(
+			var(--color-violet-1),
+			var(--color-grey-5)
+		)};
+	--personal-details-label-font-size: 1.5rem;
+
+	--personal-details-value-color: #{theme-color(
+			var(--color-black-2),
+			var(--color-white-5)
+		)};
+	--personal-details-value-font-size: 1.4rem;
+	--personal-details-value-font-weight: 600;
+
+	// RECENT CHATS
+	--recent-chats-icon-fill-color: #{theme-color(
+			var(--color-violet-1),
+			var(--color-grey-5)
+		)};
+
+	// DONE TILL HERE
+
 	// HEADING
-	---h1-font-size: 2.1rem;
-	---h2-font-size: 1.6rem;
-	---h3-font-size: 1.5rem;
+	--heading-h1-font-size: 2.1rem;
+	--heading-h2-font-size: 1.6rem;
+	--heading-h3-font-size: 1.5rem;
+	--heading-color: #{theme-color(var(--color-black-2), var(--color-white-5))};
 
 	// BUTTON
 	--button-bg: var(--color-violet-2);
@@ -95,42 +215,9 @@
 	--copyright-text-color: var(--color-black-2);
 	--copyright-font-size: 1.5rem;
 
-	// SIDE NAVIGATION
-	--sidebar-navigation-bg: var(--color-white-1);
-	--sidebar-content-bg: var(--color-white-3);
-
-	// TABS
-	--tab-active-color: var(--color-grey-9);
-	--tab-border-radius: 0.8rem;
-	--tab-icon-fill-color: var(--color-grey-7);
-	--tab-active-icon-fill-color: var(--color-violet-2);
-
 	// TOOLTIP
 	--tooltip-bg: var(--color-black-6);
 	--tooltip-color: var(--color-white-2);
-
-	// PROFILE
-	--profile-icon-color: var(--color-violet-1);
-
-	// STATUS
-	--status-border-color: var(--color-white-1);
-	--status-color: var(--color-violet-1);
-	--status-online-color: var(--color-green-1);
-	--status-offline-color: var(--color-yellow-2);
-
-	// ACCORDIAN
-	--accordian-header-bg: var(--color-white-1);
-	--accordian-color: var(--color-black-2);
-	--accordian-icon-color: var(--color-black-2);
-	--accordian-content-bg: var(--color-white-1);
-	--accordian-border-color: var(--color-white-4);
-
-	// PERSONAL DETAILS
-	--personal-details-label-color: var(--color-violet-1);
-	--personal-details-label-font-size: 1.5rem;
-	--personal-details-value-color: var(--color-black-2);
-	--personal-details-value-font-size: 1.4rem;
-	--personal-details-value-font-weight: 600;
 
 	// ATTACHMENT
 	--attachment-border-color: var(--color-white-4);
@@ -138,22 +225,21 @@
 	--attachment-name-color: var(--color-black-2);
 	--attachment-size-color: var(--color-violet-1);
 
-	//SEARCH
-	--search-input-bg: var(--color-grey-1);
-	--search-input-color: var(--color-black-2);
-	--search-input-border-radius: 0.5rem;
-	--search-icons-color: var(--color-violet-1);
-
-	// USER CARD
-	--user-card-active-bg: var(--color-grey-1);
-	--user-card-active-color: var(--color-violet-1);
-
 	// TIMESTAMP
+
 	--timestamp-color: var(--color-violet-1);
 	--timestamp-font-size: 1.1rem;
 
 	// CONTACT
-	--contact-font-color: var(--color-black-2);
+	--contact-font-color: #{theme-color(
+			var(--color-black-2),
+			var(--color-white-5)
+		)};
+	--contact-icon-fill-color: #{theme-color(
+			var(--color-violet-1),
+			var(--color-grey-5)
+		)};
+
 	--contact-font-size: 1.4rem;
 	--contact-font-weight: 600;
 
@@ -170,27 +256,39 @@
 	--add-chat-boder-color: var(--color-white-4);
 	--add-chat-bg: var(--color-white-1);
 
-	// AVATAR
-	--avatar-placeholder-bg: rgba(114, 105, 239, 0.25);
-	--avatar-placeholder-color: var(--color-violet-2);
-	--avatar-border-color: var(--color-white-4);
-
 	// CHAT AREA
-	--chat-area-bg: var(--color-white-1);
+	--chat-area-bg: #{theme-color(var(--color-white-1), var(--color-black-6))};
 
 	// CHAT HEADER
 	--chat-header-padding: 2.4rem;
-	--chat-header-border-color: var(--color-white-4);
+	--chat-header-border-color: #{theme-color(
+			var(--color-white-4),
+			var(--color-black-7)
+		)};
+
+	--chat-header-icon-fill-color: #{theme-color(
+			var(--color-violet-1),
+			var(--color-grey-5)
+		)};
 
 	// CHAT BODY
-	--chat-body-border-color: var(--color-white-4);
+	--chat-body-border-color: #{theme-color(
+			var(--color-white-4),
+			var(--color-black-7)
+		)};
 	--chat-body-padding: 2.4rem;
 
 	//  MESSAGE
-	--message-sent-bg: var(--color-white-3);
-	--message-sent-color: var(--color-black-3);
+	--message-sent-bg: #{theme-color(var(--color-white-3), var(--color-black-7))};
+	--message-sent-color: #{theme-color(
+			var(--color-black-3),
+			var(--color-white-6)
+		)};
 	--message-sent-border-radius: 0.8rem 0.8rem 0 0.8rem;
-	--message-sent-timestamp-color: var(--color-violet-1);
+	--message-sent-timestamp-color: #{theme-color(
+			var(--color-violet-1),
+			var(--color-grey-6)
+		)};
 
 	--message-received-bg: var(--color-violet-2);
 	--message-received-color: var(--color-white-1);
@@ -199,4 +297,15 @@
 
 	// CHAT FOOTER
 	--chat-footer-padding: 2.4rem;
+
+	// REACT EMOJI INPUT
+	--react-emoji-input-bg: #{theme-color(
+			rgba(230, 235, 245, 0.25),
+			var(--color-black-7)
+		)};
+
+	--react-emoji-input-color: #{theme-color(
+			var(--color-black-2),
+			var(--color-grey-5)
+		)};
 }

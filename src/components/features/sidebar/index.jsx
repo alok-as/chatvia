@@ -26,7 +26,12 @@ const Sidebar = () => {
 			key: nanoid(),
 			position: "right",
 			title: "Dark / Light Mode",
-			icon: <Icon name="moon" className={classes["sidebar__icon"]} />,
+			icon: (
+				<Icon
+					name={theme === "dark" ? "sun" : "moon"}
+					className={classes["sidebar__icon"]}
+				/>
+			),
 			onClick: () => {
 				const newTheme = theme === "dark" ? "light" : "dark";
 				setKeyInLocalStorage("theme", newTheme);
