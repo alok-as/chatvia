@@ -20,6 +20,8 @@ const RecipientProfile = () => {
 	const onlineUsers = useAuthStore((state) => state.onlineUsers);
 	const receiver = useChatStore((state) => state.receiver);
 
+	console.log("receiver", receiver);
+
 	const setIsRecipientProfileVisible = useLayoutStore(
 		(state) => state.setIsRecipientProfileVisible
 	);
@@ -48,7 +50,7 @@ const RecipientProfile = () => {
 					type="h3"
 					className={classes["recipient-profile__heading"]}
 				>
-					{receiver?.username}
+					{receiver?.name ?? receiver?.username}
 				</Heading>
 				<Status status={isOnline ? "online" : "offline"} />
 			</div>

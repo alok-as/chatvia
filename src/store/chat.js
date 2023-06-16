@@ -42,19 +42,22 @@ export const useConversationStore = create(
 
 const recentStore = (set) => ({
 	recentChats: [],
-	setRecentChats: (recentChats) => set({ recentChats }),
+	refetchRecentChats: true,
+	setRecentChats: (recentChats) =>
+		set({ recentChats, refetchRecentChats: false }),
 	updateRecentChats: (message) =>
 		set((state) => {
-			const updatedChats = state.recentChats.map((chat) => {
-				if (chat.chatRoomId === message.chatRoomId) {
-					return {
-						...chat,
-						message: message.message,
-						sentAt: message.createdAt,
-					};
-				}
-				return chat;
-			});
+			const chatIndex = state.recentChats.findIndex(
+				(chat) => chat.chatRoomId === message.chatRoomId
+			);
+
+			if (chatIndex === -1) {
+				return { refetchRecentChats: true };
+			}
+
+			const updatedChats = [...state.recentChats];
+			updatedChats[chatIndex].message = message.message;
+			updatedChats[chatIndex].sentAt = message.createdAt;
 
 			return { recentChats: updatedChats };
 		}),

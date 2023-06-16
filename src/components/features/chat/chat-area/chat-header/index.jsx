@@ -3,6 +3,7 @@ import { shallow } from "zustand/shallow";
 
 import { Avatar, Icon, Heading } from "../../../../common";
 import { useChatStore } from "../../../../../store/chat";
+
 import classes from "./index.module.scss";
 
 const ChatHeader = ({ user, status, resetChat, openRecipientProfile }) => {
@@ -60,6 +61,7 @@ const ChatHeader = ({ user, status, resetChat, openRecipientProfile }) => {
 					className={classes["chat-header__icon"]}
 					onClick={openRecipientProfile}
 				/>
+
 				<Icon name="more" className={classes["chat-header__icon"]} />
 			</div>
 		</div>

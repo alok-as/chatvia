@@ -6,6 +6,7 @@ export { default as Button } from "./button";
 export { default as ChatCard } from "./chat-card";
 export { default as ContactGroup } from "./contact-group";
 export { default as Copyright } from "./copyright";
+export { default as Dropdown } from "./dropdown";
 export { default as Heading } from "./heading";
 export { default as Icon } from "./icon";
 export { default as Input } from "./input";

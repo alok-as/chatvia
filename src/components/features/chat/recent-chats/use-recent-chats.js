@@ -25,10 +25,11 @@ const useRecentChats = () => {
 			shallow
 		);
 
-	const { recentChats, setRecentChats } = useRecentStore(
+	const { recentChats, setRecentChats, refetchRecentChats } = useRecentStore(
 		(state) => ({
 			recentChats: state.recentChats,
 			setRecentChats: state.setRecentChats,
+			refetchRecentChats: state.refetchRecentChats,
 		}),
 		shallow
 	);
@@ -148,8 +149,8 @@ const useRecentChats = () => {
 	};
 
 	useEffect(() => {
-		getChatDataHandler();
-	}, []);
+		if (refetchRecentChats) getChatDataHandler();
+	}, [refetchRecentChats]);
 
 	useEffect(() => {
 		if (onlineUsers) {
