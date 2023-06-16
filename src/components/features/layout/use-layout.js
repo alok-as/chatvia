@@ -2,7 +2,11 @@ import { useEffect, useRef } from "react";
 import { shallow } from "zustand/shallow";
 
 import { useAuthStore } from "../../../store/auth";
-import { useChatStore, useConversationStore } from "../../../store/chat";
+import {
+	useChatStore,
+	useConversationStore,
+	useRecentStore,
+} from "../../../store/chat";
 import { useLayoutStore } from "../../../store/layout";
 import { useThemeStore } from "../../../store/theme";
 
@@ -43,6 +47,10 @@ const useLayout = () => {
 		(state) => state.addMessageToConversation
 	);
 
+	const updateRecentChats = useRecentStore(
+		(state) => state.updateRecentChats
+	);
+
 	const onSocketConnectHandler = () => {
 		socket.emit("identity", profile.id);
 
@@ -51,6 +59,8 @@ const useLayout = () => {
 		});
 
 		socket.on("new message", (message) => {
+			console.log("message", message);
+			updateRecentChats(message);
 			addMessageToConversation(message);
 		});
 	};

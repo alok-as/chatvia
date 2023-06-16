@@ -42,4 +42,15 @@
 			display: initial;
 		}
 	}
+
+	&__title {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 0.5rem;
+
+		small {
+			font-size: 1.2rem;
+		}
+	}
 }

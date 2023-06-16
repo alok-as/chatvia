@@ -5,7 +5,7 @@ import Chat from "../../../../services/chat";
 import Contact from "../../../../services/contact";
 
 import { useAuthStore } from "../../../../store/auth";
-import { useChatStore } from "../../../../store/chat";
+import { useChatStore, useRecentStore } from "../../../../store/chat";
 
 const searchParams = ["name", "message"];
 
@@ -25,9 +25,16 @@ const useRecentChats = () => {
 			shallow
 		);
 
+	const { recentChats, setRecentChats } = useRecentStore(
+		(state) => ({
+			recentChats: state.recentChats,
+			setRecentChats: state.setRecentChats,
+		}),
+		shallow
+	);
+
 	const onlineUsers = useAuthStore((state) => state.onlineUsers);
 
-	const [recentChats, setRecentChats] = useState([]);
 	const [registeredContacts, setRegisteredContacts] = useState([]);
 	const [nonRegisteredContacts, setNonRegisteredContacts] = useState([]);
 
