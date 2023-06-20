@@ -1,4 +1,3 @@
-import React from "react";
 import { combineClasses, formatTimestamp } from "../../../utils";
 
 import classes from "./index.module.scss";

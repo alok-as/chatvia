@@ -12,8 +12,8 @@ const Icon = ({ name = "home", className, onClick }) => {
 
 	const Component = Icons[name];
 	return (
-		<span className={attachClassHandler()}>
-			<Component className={classes["icon"]} onClick={onClick} />
+		<span className={attachClassHandler()} onClick={onClick}>
+			<Component className={classes["icon"]} />
 		</span>
 	);
 };

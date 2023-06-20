@@ -1,5 +1,4 @@
 import { nanoid } from "nanoid";
-
 import { Icon, Tab } from "../../../common";
 
 import classes from "./index.module.scss";

@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
-import Calendar from "dayjs/plugin/calendar";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+import isYesterday from "dayjs/plugin/isYesterday";
 
 import config from "../config";
 
-dayjs.extend(Calendar);
 dayjs.extend(isSameOrAfter);
+dayjs.extend(isYesterday);
 
 export const combineClasses = (...classes) => {
 	return classes
@@ -132,11 +132,15 @@ export const getRootFontValue = () =>
 	parseFloat(getComputedStyle(document.documentElement).fontSize);
 
 export const formatTimestamp = (timestamp) => {
-	return dayjs(timestamp).calendar(null, {
-		sameDay: "h:mm A",
-		lastDay: "[Yesterday]",
-		sameElse: "DD/MM/YYYY",
-	});
+	if (dayjs().isSame(timestamp, "day")) {
+		return dayjs(timestamp).format("h:mm A");
+	}
+
+	if (dayjs(timestamp).isYesterday()) {
+		return "Yesterday";
+	}
+
+	return dayjs(timestamp).format("DD/MM/YYYY");
 };
 
 export const isUserOnline = (onlineUsers, userId) => {

@@ -7,6 +7,7 @@ import ForgotPassword from "./pages/forgot-password";
 
 import Profile from "./components/features/auth/profile";
 import ProtectedRoute from "./components/features/auth/protected-route";
+import Settings from "./components/features/auth/settings";
 
 import RecentChats from "./components/features/chat/recent-chats";
 import Contacts from "./components/features/chat/contacts";
@@ -24,6 +25,7 @@ const App = () => {
 					<Route path="profile" element={<Profile />} />
 					<Route path="chat" element={<RecentChats />} />
 					<Route path="contacts" element={<Contacts />} />
+					<Route path="settings" element={<Settings />} />
 
 					<Route path="*" element={<Navigate to="/app/chat" />} />
 				</Route>

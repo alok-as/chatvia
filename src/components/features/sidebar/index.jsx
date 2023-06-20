@@ -24,8 +24,7 @@ const Sidebar = () => {
 	const options = [
 		{
 			key: nanoid(),
-			position: "right",
-			title: "Dark / Light Mode",
+			title: theme === "dark" ? "Light Mode" : "Dark Mode",
 			icon: (
 				<Icon
 					name={theme === "dark" ? "sun" : "moon"}

@@ -1,0 +1,62 @@
+.settings {
+	overflow: hidden;
+	height: 100%;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__avatar {
+		position: relative;
+	}
+
+	&__icon {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		cursor: pointer;
+
+		background-color: var(--color-grey-1);
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		padding: 1rem;
+		border-radius: 50%;
+
+		&:hover {
+			background-color: #c2cee6;
+		}
+
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+			fill: var(--color-black-2);
+		}
+	}
+
+	&__heading {
+		margin-bottom: 2.4rem;
+	}
+
+	&__input {
+		display: none;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		padding: 2.4rem 0;
+		margin-bottom: 2.4rem;
+	}
+
+	&__details {
+		margin-top: 2.4rem;
+	}
+}
