@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { shallow } from "zustand/shallow";
 
 import Chat from "../../../../services/chat";
@@ -30,33 +30,54 @@ const useChatArea = () => {
 		shallow
 	);
 
-	const { conversation, setConversation } = useConversationStore(
-		(state) => ({
-			conversation: state.conversation,
-			setConversation: state.setConversation,
-		}),
-		shallow
-	);
+	const { conversation, pagination, setConversation, updateConversation } =
+		useConversationStore(
+			(state) => ({
+				conversation: state.conversation,
+				pagination: state.pagination,
+				setConversation: state.setConversation,
+				updateConversation: state.updateConversation,
+			}),
+			shallow
+		);
 
 	const setIsRecipientProfileVisible = useLayoutStore(
 		(state) => state.setIsRecipientProfileVisible
 	);
 
+	const fetchNextMessagesHandler = async (page, perPage) => {
+		const { data } = await Chat.getConversation(roomId, {
+			page,
+			perPage,
+		});
+		updateConversation(data.conversation);
+	};
+
 	const getChatDataHandler = async (receiverId, roomId) => {
-		const [profile, conversation] = await Promise.all([
+		const [profileRes, conversationRes] = await Promise.all([
 			User.getProfile(receiverId),
 			Chat.getConversation(roomId),
 		]);
 
-		setChatUser({ ...receiver, ...profile.data });
-		setConversation(conversation.data);
+		setChatUser({ ...receiver, ...profileRes.data });
+		setConversation(
+			conversationRes.data.conversation,
+			conversationRes.data.pagination
+		);
 	};
 
 	const openRecipientProfileHandler = () =>
 		setIsRecipientProfileVisible(true);
 
-	const sendMessageHandler = (message) =>
-		Chat.sendMessage({ chatRoomId: roomId, message });
+	const sendMessageHandler = ({ message, type = "text" }) => {
+		const formData = new FormData();
+
+		formData.append("chatRoomId", roomId);
+		formData.append("message", message);
+		formData.append("type", type);
+
+		return Chat.sendMessage(formData);
+	};
 
 	useEffect(() => {
 		socket.emit("subscribe", roomId, receiverId);
@@ -69,6 +90,7 @@ const useChatArea = () => {
 
 	return {
 		conversation,
+		pagination,
 		onlineUsers,
 		profile,
 		receiver,
@@ -76,6 +98,7 @@ const useChatArea = () => {
 		sendMessageHandler,
 		resetChat,
 		openRecipientProfileHandler,
+		fetchNextMessagesHandler,
 	};
 };
 

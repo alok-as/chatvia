@@ -9,6 +9,7 @@ import { isUserOnline } from "../../../../utils";
 const ChatArea = () => {
 	const {
 		conversation,
+		pagination,
 		onlineUsers,
 		profile,
 		receiver,
@@ -16,6 +17,7 @@ const ChatArea = () => {
 		resetChat,
 		sendMessageHandler,
 		openRecipientProfileHandler,
+		fetchNextMessagesHandler,
 	} = useChatArea();
 
 	return (
@@ -28,11 +30,15 @@ const ChatArea = () => {
 				resetChat={resetChat}
 				openRecipientProfile={openRecipientProfileHandler}
 			/>
+
 			<ChatBody
-				currentUserId={profile.id}
 				conversation={conversation}
+				pagination={pagination}
+				currentUserId={profile.id}
 				receiverName={receiver?.name}
+				fetchNextMessages={fetchNextMessagesHandler}
 			/>
+
 			<ChatFooter sendMessage={sendMessageHandler} />
 		</div>
 	);

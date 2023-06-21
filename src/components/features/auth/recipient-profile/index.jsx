@@ -20,8 +20,6 @@ const RecipientProfile = () => {
 	const onlineUsers = useAuthStore((state) => state.onlineUsers);
 	const receiver = useChatStore((state) => state.receiver);
 
-	console.log("receiver", receiver);
-
 	const setIsRecipientProfileVisible = useLayoutStore(
 		(state) => state.setIsRecipientProfileVisible
 	);
@@ -61,12 +59,6 @@ const RecipientProfile = () => {
 			<div className={classes["recipient-profile__details"]}>
 				<Accordian title="About" icon="user">
 					<PersonalDetails profile={receiver} />
-				</Accordian>
-				<Accordian title="Attached Files" icon="attachment">
-					<div>
-						<Attachment />
-						<Attachment />
-					</div>
 				</Accordian>
 			</div>
 		</div>

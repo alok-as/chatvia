@@ -37,7 +37,7 @@ request.interceptors.response.use(
 	async (error) => {
 		const originalRequest = error.config;
 
-		if (error.response.status === 401) {
+		if (error?.response?.status === 401) {
 			if (error.response?.data?.code === 490) {
 				const { accessToken, refreshToken } = error.response.data.data;
 				storeAuthTokens(accessToken, refreshToken);

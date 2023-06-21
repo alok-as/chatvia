@@ -222,10 +222,20 @@ body {
 	--tooltip-color: var(--color-white-2);
 
 	// ATTACHMENT
-	--attachment-border-color: var(--color-white-4);
+	--attachment-border-color: #{theme-color(
+			var(--color-white-4),
+			var(--color-black-7)
+		)};
+
 	--attachment-padding: 0.8rem;
-	--attachment-name-color: var(--color-black-2);
-	--attachment-size-color: var(--color-violet-1);
+	--attachment-name-color: #{theme-color(
+			var(--color-black-2),
+			var(--color-white-5)
+		)};
+	--attachment-size-color: #{theme-color(
+			var(--color-violet-1),
+			var(--color-grey-5)
+		)};
 
 	// TIMESTAMP
 

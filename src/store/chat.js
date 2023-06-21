@@ -31,9 +31,15 @@ export const useChatStore = create(
 
 const conversationStore = (set) => ({
 	conversation: [],
-	setConversation: (conversation) => set({ conversation }),
+	pagination: null,
+	setConversation: (conversation, pagination) =>
+		set({ conversation, pagination }),
 	addMessageToConversation: (message) =>
 		set((state) => ({ conversation: [...state.conversation, message] })),
+	updateConversation: (messages) =>
+		set((state) => ({
+			conversation: [...messages, ...state.conversation],
+		})),
 });
 
 export const useConversationStore = create(

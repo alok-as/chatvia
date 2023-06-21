@@ -39,6 +39,9 @@
 	&__name {
 		font-size: 1.4rem;
 		font-weight: 600;
+		max-width: 15rem;
+		overflow-wrap: break-word;
+		hyphens: auto;
 		color: var(--attachment-name-color);
 	}
 

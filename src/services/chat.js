@@ -9,8 +9,10 @@ const Chat = {
 			userIds: [userId],
 		});
 	},
-	getConversation(roomId) {
-		return request.get(`/chat-message/${roomId}`);
+	getConversation(roomId, params) {
+		return request.get(`/chat-message/${roomId}`, {
+			params,
+		});
 	},
 	sendMessage(data) {
 		return request.post("/chat-message", data);

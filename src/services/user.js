@@ -10,6 +10,9 @@ const User = {
 	getProfile(userId) {
 		return request.get(`/user/${userId}`);
 	},
+	getAttachments() {
+		return request.get(`/user/attachments`);
+	},
 };
 
 export default User;

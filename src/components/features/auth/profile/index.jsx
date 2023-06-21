@@ -1,4 +1,3 @@
-import { isUserOnline } from "../../../../utils";
 import {
 	Heading,
 	Icon,
@@ -10,16 +9,11 @@ import {
 	Attachment,
 } from "../../../common";
 
-import { useAuthStore } from "../../../../store/auth";
 import classes from "./index.module.scss";
+import useProfile from "./use-profile";
 
 const Profile = () => {
-	const { profile, onlineUsers } = useAuthStore((state) => ({
-		profile: state.profile,
-		onlineUsers: state.onlineUsers,
-	}));
-
-	const isOnline = isUserOnline(onlineUsers, profile.id);
+	const { profile, attachments } = useProfile();
 
 	return (
 		<div className={classes["profile"]}>
@@ -39,7 +33,7 @@ const Profile = () => {
 				<Heading type="h3" className={classes["profile__heading"]}>
 					{profile.username}
 				</Heading>
-				<Status status={isOnline ? "online" : "offline"} />
+				<Status status="online" />
 			</div>
 			<div className={classes["profile__description"]}>
 				<Paragraph size="small">{profile.description}</Paragraph>
@@ -49,12 +43,20 @@ const Profile = () => {
 				<Accordian title="About" icon="user">
 					<PersonalDetails profile={profile} />
 				</Accordian>
-				<Accordian title="Attached Files" icon="attachment">
-					<div>
-						<Attachment />
-						<Attachment />
-					</div>
-				</Accordian>
+				{attachments.length !== 0 && (
+					<Accordian title="Attached Files" icon="attachment">
+						<div>
+							{attachments.map(({ id, filename, size, url }) => (
+								<Attachment
+									key={id}
+									url={url}
+									filename={filename}
+									size={size}
+								/>
+							))}
+						</div>
+					</Accordian>
+				)}
 			</div>
 		</div>
 	);

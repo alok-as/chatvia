@@ -131,7 +131,11 @@ export const getKeyFromLocalStorage = (key, defaultValue = null) => {
 export const getRootFontValue = () =>
 	parseFloat(getComputedStyle(document.documentElement).fontSize);
 
-export const formatTimestamp = (timestamp) => {
+export const formatTimestamp = (timestamp, options) => {
+	if (options?.isFullForm) {
+		return dayjs(timestamp).format("DD MMM YY, h:mm A");
+	}
+
 	if (dayjs().isSame(timestamp, "day")) {
 		return dayjs(timestamp).format("h:mm A");
 	}

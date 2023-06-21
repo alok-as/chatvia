@@ -5,6 +5,7 @@ import InputEmoji from "react-input-emoji";
 import { useChatStore } from "../../../../../store/chat";
 import { useAuthStore } from "../../../../../store/auth";
 import { Button, Icon } from "../../../../common";
+// import { generateFilePreview } from "../../../../../utils";
 
 import classes from "./index.module.scss";
 import "./react-emoji.scss";
@@ -25,21 +26,39 @@ const ChatFooter = ({ sendMessage }) => {
 	);
 
 	const [message, setMessage] = useState("");
-
-	const uploadDocumentsHandler = () => {
-		documentRef.current.click();
-	};
+	const [previewImage, setPreviewImage] = useState(null);
 
 	const onInputChangeHandler = (message) => {
 		setMessage(message);
 	};
 
+	const openFileUploaderHandler = () => {
+		documentRef.current.click();
+	};
+
+	const onFileChangeHandler = (e) => {
+		const file = e.target.files[0];
+		setPreviewImage(file);
+		// generateFilePreview(file, setPreviewImage);
+	};
+
 	const sendMessageHandler = async () => {
 		try {
-			await sendMessage(message);
+			if (!message) return;
+			await sendMessage({ message, type: "text" });
 			setMessage("");
 		} catch (error) {
 			console.log("Error sending message");
+		}
+	};
+
+	const sendImageHandler = async () => {
+		try {
+			if (!previewImage) return;
+			await sendMessage({ message: previewImage, type: "media" });
+			setPreviewImage(null);
+		} catch (error) {
+			console.log("Error sending image", error);
 		}
 	};
 
@@ -99,7 +118,7 @@ const ChatFooter = ({ sendMessage }) => {
 				<ul className={classes["chat-footer__list"]}>
 					<li
 						className={classes["chat-footer__option"]}
-						onClick={uploadDocumentsHandler}
+						onClick={openFileUploaderHandler}
 					>
 						<Icon
 							name="attachment"
@@ -108,7 +127,8 @@ const ChatFooter = ({ sendMessage }) => {
 						<input
 							ref={documentRef}
 							type="file"
-							accept=".gif,.doc,.pdf,.xlsx,.txt"
+							accept=".gif,.jpg, .jpeg, .png"
+							onChange={onFileChangeHandler}
 							className={classes["chat-footer__file"]}
 						/>
 					</li>

@@ -1,6 +1,5 @@
 .chat-message {
 	$this: &;
-	max-width: 40rem;
 	display: flex;
 	gap: 1rem;
 
@@ -22,6 +21,11 @@
 		position: relative;
 		overflow-wrap: break-word;
 		hyphens: auto;
+		max-width: 40rem;
+
+		@include respond(sm) {
+			max-width: 25rem;
+		}
 	}
 
 	&__username {
@@ -60,6 +64,7 @@
 			border-radius: var(--message-sent-border-radius);
 			color: var(--message-sent-color);
 			background-color: var(--message-sent-bg);
+			text-align: right;
 
 			&::before {
 				border-color: var(--message-sent-bg) var(--message-sent-bg)
@@ -82,6 +87,7 @@
 			border-radius: var(--message-received-border-radius);
 			color: var(--message-received-color);
 			background-color: var(--message-received-bg);
+			text-align: left;
 
 			&::before {
 				border-color: var(--message-received-bg) transparent transparent
@@ -93,6 +99,10 @@
 			#{$this}__timestamp {
 				color: var(--message-received-timestamp-color);
 				align-self: flex-end;
+
+				svg {
+					fill: var(--message-received-timestamp-color);
+				}
 			}
 		}
 	}
@@ -107,5 +117,10 @@
 		font-size: 1.5rem;
 		margin-bottom: 1rem;
 		line-height: 1.7;
+	}
+
+	&__image {
+		height: auto;
+		margin-bottom: 1.5rem;
 	}
 }

@@ -59,7 +59,6 @@ const useLayout = () => {
 		});
 
 		socket.on("new message", (message) => {
-			console.log("message", message);
 			updateRecentChats(message);
 			addMessageToConversation(message);
 		});
